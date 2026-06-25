@@ -2,17 +2,18 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-
-const LINES = [
-  "...stays up late with you.",
-  "...doesn't judge when you get it wrong.",
-  "...figures out the hard stuff right beside you.",
-];
+import type { LandingCopy } from "@/content/landing";
 
 // Added an intermediate "zoom" phase for the smooth layout extraction
 type Phase = "typing" | "zoom" | "morph" | "logo";
 
-export default function Hero() {
+export default function Hero({
+  content,
+  onDemoClick,
+}: {
+  content: LandingCopy["hero"];
+  onDemoClick?: () => void;
+}) {
   const [phase, setPhase] = useState<Phase>("typing");
   const [lineIdx, setLineIdx] = useState(0);
   const [typed, setTyped] = useState("");
@@ -20,7 +21,7 @@ export default function Hero() {
   // 1. Type out the rotating lines
   useEffect(() => {
     if (phase !== "typing") return;
-    const full = LINES[lineIdx];
+    const full = content.lines[lineIdx];
     
     if (typed.length < full.length) {
       const t = setTimeout(() => setTyped(full.slice(0, typed.length + 1)), 45);
@@ -28,7 +29,7 @@ export default function Hero() {
     }
     
     const hold = setTimeout(() => {
-      if (lineIdx < LINES.length - 1) {
+      if (lineIdx < content.lines.length - 1) {
         setTyped("");
         setLineIdx((i) => i + 1);
       } else {
@@ -38,7 +39,7 @@ export default function Hero() {
     }, 1100);
     
     return () => clearTimeout(hold);
-  }, [typed, lineIdx, phase]);
+  }, [typed, lineIdx, phase, content.lines]);
 
   // 2. Sequence: zoom -> morph -> logo 
   useEffect(() => {
@@ -58,12 +59,58 @@ export default function Hero() {
   const showContent = phase === "logo";
   const showLargeWord = phase === "zoom" || phase === "morph" || phase === "logo";
   const isTyping = phase === "typing";
+  const isIntroRunning = phase !== "logo";
+
+  const handleSkipIntro = () => {
+    setLineIdx(content.lines.length - 1);
+    setTyped(content.lines[content.lines.length - 1] ?? "");
+    setPhase("logo");
+  };
 
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
-      <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-brand/15 blur-[140px]" />
-      <div className="pointer-events-none absolute left-1/4 top-2/3 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
+      <AnimatePresence>
+        {isIntroRunning && (
+          <motion.button
+            key="hero-skip"
+            type="button"
+            onClick={handleSkipIntro}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="absolute bottom-10 right-6 z-20 text-sm text-muted/85 transition hover:text-text sm:bottom-12 sm:right-8"
+          >
+            {content.skipLabel}
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showContent && (
+          <motion.div
+            key="hero-actions"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
+            className="absolute right-6 top-6 z-20 flex items-center gap-3 sm:right-8 sm:top-8"
+          >
+            <a
+              href="https://app.dfriend.online/login"
+              className="rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-medium text-text backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
+            >
+              {content.actions.login}
+            </a>
+            <a
+              href="https://app.dfriend.online/register"
+              className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:-translate-y-0.5 hover:bg-brand/90"
+            >
+              {content.actions.register}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Fixed height container ensures surrounding elements don't jump during morphs */}
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center justify-center min-h-[16rem]">
@@ -75,14 +122,19 @@ export default function Hero() {
             scale: isTyping ? 1 : 0.95,
           }}
           transition={{ duration: 0.45, ease: "easeOut" }}
-          className="absolute inset-0 flex flex-col items-center justify-center"
+          className={`absolute inset-0 flex flex-col items-center justify-center ${
+            isTyping ? "pointer-events-auto" : "pointer-events-none"
+          }`}
           aria-hidden={!isTyping}
         >
           <p className="flex flex-wrap items-center justify-center text-lg text-muted sm:text-xl">
-            <span>Everyone wants to have&nbsp;</span>
-            <span className="inline-block text-muted">the</span>
-            <span className="inline-block text-muted">&nbsp;friend</span>
-            <span>&nbsp;that</span>
+            <span>{content.intro.prefix.trim()}</span>
+            <span>&nbsp;</span>
+            <span className="inline-block text-muted">{content.intro.primary.trim()}</span>
+            <span>&nbsp;</span>
+            <span className="inline-block text-muted">{content.intro.secondary.trim()}</span>
+            <span>&nbsp;</span>
+            <span>{content.intro.suffix.trim()}</span>
           </p>
           <p className="mt-3 flex h-10 items-center text-2xl font-medium text-text sm:text-4xl">
             <span>{typed}</span>
@@ -114,7 +166,7 @@ export default function Hero() {
                 }
                 className="inline-block origin-right text-muted"
               >
-                {showD ? "D" : "the"}
+                {showD ? content.morph.logoPrimary : content.morph.basePrimary}
               </motion.span>
               <motion.span
                 transition={{ duration: 0.55, ease: "easeInOut" }}
@@ -125,7 +177,7 @@ export default function Hero() {
                 }}
                 className="inline-block origin-left text-muted"
               >
-                {showD ? "-Friend" : "\u00A0friend"}
+                {showD ? content.morph.logoSecondary : content.morph.baseSecondary}
               </motion.span>
             </div>
           </motion.div>
@@ -142,25 +194,24 @@ export default function Hero() {
               className="mt-10 flex flex-col items-center"
             >
               <p className="max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg">
-                Not a teacher. Not a tutor.{" "}
-                <span className="text-text">Your ultimate study buddy.</span>{" "}
-                A new learning engine designed to completely refactor how your
-                mind processes difficult concepts.
+                {content.summary.prefix}
+                <span className="text-text">{content.summary.highlight}</span>
+                {content.summary.suffix}
               </p>
-              <a
-                href="#demo"
+              <button
+                type="button"
+                onClick={onDemoClick}
                 className="mt-8 rounded-full bg-brand px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand/25 transition hover:scale-[1.03] hover:bg-brand/90"
               >
-                Meet Your D-Friend — Try the Demo
-              </a>
+                {content.cta}
+              </button>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
                 className="mt-16 text-sm text-muted"
               >
-                <span className="inline-block animate-bounce">↓</span> scroll to
-                meet your friend
+                <span className="inline-block animate-bounce">↓</span> {content.scrollHint}
               </motion.div>
             </motion.div>
           )}

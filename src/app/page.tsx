@@ -1,19 +1,6 @@
-import Hero from "@/components/Hero";
-import Philosophy from "@/components/Philosophy";
-import Experience from "@/components/Experience";
-import StudyBuddy from "@/components/StudyBuddy";
-import Progress from "@/components/Progress";
-import Footer from "@/components/Footer";
+import LandingPage from "@/components/LandingPage";
+import { landingCopy } from "@/content/landing";
 
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-      <Philosophy />
-      <Experience />
-      <StudyBuddy />
-      <Progress />
-      <Footer />
-    </main>
-  );
+  return <LandingPage copy={landingCopy.en} />;
 }

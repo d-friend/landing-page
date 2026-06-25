@@ -1,49 +1,42 @@
 import Reveal from "./Reveal";
+import type { LandingCopy } from "@/content/landing";
 
-export default function Philosophy() {
+export default function Philosophy({
+  content,
+  sectionId,
+}: {
+  content: LandingCopy["philosophy"];
+  sectionId?: string;
+}) {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-28">
+    <section id={sectionId} className="mx-auto max-w-6xl px-6 py-28">
       <Reveal className="mb-16 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
-          What&apos;s in a name?
+          {content.eyebrow}
         </span>
-        <h2 className="mt-4 text-3xl font-bold sm:text-5xl">
-          Two letters. One promise.
-        </h2>
+        <h2 className="mt-4 text-3xl font-bold sm:text-5xl">{content.title}</h2>
       </Reveal>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Reveal className="group rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-brand/40 sm:p-10">
-          <div className="text-5xl font-bold text-brand">D</div>
-          <h3 className="mt-6 text-2xl font-bold">
-            The &ldquo;D&rdquo; stands for Done.
-          </h3>
-          <p className="mt-2 text-lg font-medium text-brand">Done &gt; Perfect.</p>
+        <Reveal className="panel-card panel-card-brand rounded-3xl p-8 sm:p-10">
+          <div className="text-5xl font-bold text-brand">{content.done.label}</div>
+          <h3 className="mt-6 text-2xl font-bold">{content.done.title}</h3>
+          <p className="mt-2 text-lg font-medium text-brand">{content.done.subtitle}</p>
           <p className="mt-4 leading-relaxed text-muted">
-            Most platforms punish you for failing. We reward you for trying. Our
-            core <span className="text-text">P-D-E-O engine</span> (Problem →
-            Done → Execute → Optimize) is built on the reality that completion
-            matters more than perfection. Even an incorrect answer moves your
-            progress bar forward — because a mistake is an active step toward
-            mastery.
+            {content.done.body.split(content.done.emphasis)[0]}
+            <span className="text-text">{content.done.emphasis}</span>
+            {content.done.body.split(content.done.emphasis)[1]}
           </p>
         </Reveal>
 
         <Reveal
           delay={0.1}
-          className="group rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-accent/40 sm:p-10"
+          className="panel-card panel-card-accent rounded-3xl p-8 sm:p-10"
         >
-          <div className="text-5xl font-bold text-accent">Friend</div>
-          <h3 className="mt-6 text-2xl font-bold">
-            The &ldquo;Friend&rdquo; stands for, well, a Friend.
-          </h3>
-          <p className="mt-2 text-lg font-medium text-accent">A peer, not a professor.</p>
-          <p className="mt-4 leading-relaxed text-muted">
-            Your D-Friend isn&apos;t programmed to lecture you. It&apos;s an AI
-            designed to be your peer. It follows your lead, works alongside you,
-            and never talks down to you. When you mess up, it doesn&apos;t
-            judge — it simply figures it out with you.
-          </p>
+          <div className="text-5xl font-bold text-accent">{content.friend.label}</div>
+          <h3 className="mt-6 text-2xl font-bold">{content.friend.title}</h3>
+          <p className="mt-2 text-lg font-medium text-accent">{content.friend.subtitle}</p>
+          <p className="mt-4 leading-relaxed text-muted">{content.friend.body}</p>
         </Reveal>
       </div>
     </section>

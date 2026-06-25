@@ -45,3 +45,80 @@ body {
     linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+
+@layer components {
+  .panel-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+      rgba(15, 23, 42, 0.5);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.2);
+    backdrop-filter: blur(14px);
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      background 220ms ease;
+  }
+
+  .panel-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 55%);
+    opacity: 0.7;
+    transition: opacity 220ms ease;
+  }
+
+  .panel-card::after {
+    content: "";
+    position: absolute;
+    right: -3rem;
+    bottom: -4rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0;
+    transition: opacity 220ms ease, transform 220ms ease;
+    transform: scale(0.9);
+  }
+
+  .panel-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .panel-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 30px 70px rgba(2, 6, 23, 0.32);
+  }
+
+  .panel-card:hover::before {
+    opacity: 1;
+  }
+
+  .panel-card:hover::after {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  .panel-card-brand::after {
+    background: rgba(255, 115, 92, 0.35);
+  }
+
+  .panel-card-accent::after {
+    background: rgba(139, 92, 246, 0.35);
+  }
+
+  .panel-card-cyan::after {
+    background: rgba(34, 211, 238, 0.26);
+  }
+
+  .panel-card-soft:hover {
+    transform: translateY(-2px);
+  }
+}

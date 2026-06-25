@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { landingCopy } from "@/content/landing";
 import "./globals.css";
 
 const geist = Geist({
@@ -10,9 +11,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "D-Friend — Not a teacher. Not a tutor. Your study buddy.",
-  description:
-    "D-Friend is a new learning engine built on Done > Perfect. An AI peer that learns beside you and refactors how your mind handles hard concepts.",
+  title: landingCopy.en.metadata.title,
+  description: landingCopy.en.metadata.description,
 };
 
 export default function RootLayout({
