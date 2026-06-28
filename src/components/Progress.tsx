@@ -12,7 +12,7 @@ export default function Progress({
   sectionId?: string;
 }) {
   return (
-    <section id={sectionId} className="mx-auto max-w-5xl px-6 py-28">
+    <section id={sectionId} className="mx-auto max-w-5xl scroll-mt-32 px-6 py-28">
       <Reveal className="mb-12 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
           {content.eyebrow}

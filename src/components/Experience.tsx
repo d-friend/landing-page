@@ -9,7 +9,10 @@ export default function Experience({
   sectionId?: string;
 }) {
   return (
-    <section id={sectionId} className="relative mx-auto max-w-6xl px-6 py-28 opacity-100">
+    <section
+      id={sectionId}
+      className="relative mx-auto max-w-6xl scroll-mt-32 px-6 py-28 opacity-100"
+    >
       <Reveal className="mb-16 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
           {content.eyebrow}

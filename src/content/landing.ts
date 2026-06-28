@@ -5,6 +5,13 @@ export type LandingCopy = {
     title: string;
     description: string;
   };
+  navigation: {
+    brand: string;
+    sections: Array<{
+      label: string;
+      href: string;
+    }>;
+  };
   hero: {
     lines: string[];
     intro: {
@@ -70,6 +77,31 @@ export type LandingCopy = {
       desc: string;
     }>;
   };
+  differentiation: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    genericLabel: string;
+    dfriendLabel: string;
+    genericPoints: Array<{
+      title: string;
+      body: string;
+    }>;
+    dfriendPoints: Array<{
+      title: string;
+      body: string;
+    }>;
+  };
+  coreEngine: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: Array<{
+      letter: string;
+      word: string;
+      body: string;
+    }>;
+  };
   studyBuddy: {
     eyebrow: string;
     title: string;
@@ -124,6 +156,17 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       title: "D-Friend — Not a teacher. Not a tutor. Your study buddy.",
       description:
         "D-Friend is a new learning engine built on Done > Perfect. An AI peer that learns beside you and refactors how your mind handles hard concepts.",
+    },
+    navigation: {
+      brand: "D-Friend",
+      sections: [
+        { label: "Promise", href: "#landing-philosophy" },
+        { label: "Study Buddy", href: "#landing-study-buddy" },
+        { label: "Experience", href: "#landing-experience" },
+        { label: "Core Engine", href: "#landing-core-engine" },
+        { label: "Difference", href: "#landing-differentiation" },
+        { label: "Progress", href: "#landing-progress" },
+      ],
     },
     hero: {
       lines: [
@@ -222,6 +265,70 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         },
       ],
     },
+    differentiation: {
+      eyebrow: "Why D-Friend is different",
+      title: "More than a chat UI with a smarter prompt.",
+      description:
+        "Most AI study products stop at answer checking. D-Friend is built to interpret attempts, separate signal from noise, and respond based on where your thinking is actually going.",
+      genericLabel: "Typical AI study tool",
+      dfriendLabel: "D-Friend",
+      genericPoints: [
+        {
+          title: "One reply tries to do everything.",
+          body: "Feedback, diagnosis, and encouragement all get blended together, so the product reacts to output instead of understanding the attempt.",
+        },
+        {
+          title: "Wrong is treated as one category.",
+          body: "A thoughtful mistake and a random guess often receive the same kind of response, which makes the help feel generic fast.",
+        },
+        {
+          title: "Progress is prompt-deep, not product-deep.",
+          body: "State lives inside conversation context, so continuity gets fragile as sessions get longer or more complex.",
+        },
+      ],
+      dfriendPoints: [
+        {
+          title: "Reasoning is separated from response.",
+          body: "D-Friend first interprets the attempt, then decides how to help, so encouragement never replaces judgment and judgment never kills momentum.",
+        },
+        {
+          title: "It distinguishes effort from drift.",
+          body: "The system can tell when your method is promising, when your logic broke late, and when you have stopped genuinely engaging with the problem.",
+        },
+        {
+          title: "Progress has memory outside the model.",
+          body: "Attempts, unlocks, and momentum are tracked as product state, which keeps the learning arc consistent from one session to the next.",
+        },
+      ],
+    },
+    coreEngine: {
+      eyebrow: "Core Engine",
+      title: "The P-D-E-O loop keeps learning moving.",
+      description:
+        "Every interaction is shaped by a simple rule: progress should reward real effort. P-D-E-O turns that rule into a repeatable loop so each submission becomes useful, even when it is imperfect.",
+      steps: [
+        {
+          letter: "P",
+          word: "Problem",
+          body: "You get a concrete challenge with enough friction to reveal how you currently think, not just what you remember.",
+        },
+        {
+          letter: "D",
+          word: "Done",
+          body: "You commit to an attempt. Submission matters because movement starts when your thinking leaves your head and hits the page.",
+        },
+        {
+          letter: "E",
+          word: "Execute",
+          body: "D-Friend evaluates the work by reading the approach and the answer separately, so it can respond to substance instead of surface.",
+        },
+        {
+          letter: "O",
+          word: "Optimize",
+          body: "The next response is tuned to your actual state: push harder, stabilize a good method, or step in softly when you are spiraling.",
+        },
+      ],
+    },
     studyBuddy: {
       eyebrow: "The study buddy model",
       title: "How your D-Friend actually thinks",
@@ -280,6 +387,17 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       title: "D-Friend — Không phải giáo viên. Không phải gia sư. Người bạn học của bạn.",
       description:
         "D-Friend là một cỗ máy học tập mới được xây trên tinh thần Done > Perfect. Một AI đồng hành học cùng bạn và tái cấu trúc cách bạn xử lý những khái niệm khó.",
+    },
+    navigation: {
+      brand: "D-Friend",
+      sections: [
+        { label: "Lời hứa", href: "#landing-philosophy" },
+        { label: "Study Buddy", href: "#landing-study-buddy" },
+        { label: "Trải nghiệm", href: "#landing-experience" },
+        { label: "Core Engine", href: "#landing-core-engine" },
+        { label: "Khác biệt", href: "#landing-differentiation" },
+        { label: "Tiến độ", href: "#landing-progress" },
+      ],
     },
     hero: {
       lines: [
@@ -375,6 +493,70 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
           role: "Mở rộng",
           desc:
             "Áp dụng tư duy vừa được tái cấu trúc vào bài cuối cùng — và rời đi với sự tự tin vững chắc.",
+        },
+      ],
+    },
+    differentiation: {
+      eyebrow: "Vì sao D-Friend khác biệt",
+      title: "Không chỉ là chatbot học tập với prompt hay hơn.",
+      description:
+        "Phần lớn công cụ AI chỉ dừng ở việc chấm đúng sai. D-Friend được thiết kế để đọc nỗ lực, tách tín hiệu khỏi nhiễu, và phản hồi dựa trên hướng suy nghĩ thật sự của bạn.",
+      genericLabel: "Công cụ AI học tập thông thường",
+      dfriendLabel: "D-Friend",
+      genericPoints: [
+        {
+          title: "Một câu trả lời gánh toàn bộ công việc.",
+          body: "Phản hồi, chẩn đoán và động viên bị trộn vào cùng một lượt sinh nội dung, nên sản phẩm chỉ phản ứng với kết quả bề mặt.",
+        },
+        {
+          title: "Sai bị xem như một loại duy nhất.",
+          body: "Một lỗi có suy nghĩ và một cú đoán mò thường nhận cùng kiểu phản hồi, khiến trải nghiệm nhanh chóng trở nên chung chung.",
+        },
+        {
+          title: "Tiến độ nằm trong prompt, không nằm trong sản phẩm.",
+          body: "Trạng thái phụ thuộc vào ngữ cảnh hội thoại, nên càng học dài hoặc phức tạp thì độ ổn định càng giảm.",
+        },
+      ],
+      dfriendPoints: [
+        {
+          title: "Suy luận được tách khỏi phản hồi.",
+          body: "D-Friend đọc nỗ lực trước rồi mới quyết định cách hỗ trợ, nên động viên không thay cho đánh giá và đánh giá cũng không làm mất đà học.",
+        },
+        {
+          title: "Phân biệt được cố gắng với lệch hướng.",
+          body: "Hệ thống nhận ra khi phương pháp của bạn có tiềm năng, khi logic chỉ vỡ ở đoạn cuối, và khi bạn đã ngừng thật sự bám vào bài toán.",
+        },
+        {
+          title: "Tiến độ có bộ nhớ nằm ngoài mô hình.",
+          body: "Lần thử, mốc mở khóa và momentum được lưu như trạng thái của sản phẩm, giúp hành trình học giữ được tính nhất quán qua nhiều buổi.",
+        },
+      ],
+    },
+    coreEngine: {
+      eyebrow: "Core Engine",
+      title: "Vòng lặp P-D-E-O giữ việc học luôn tiến lên.",
+      description:
+        "Mọi tương tác đều bám vào một nguyên tắc: nỗ lực thật phải được ghi nhận. P-D-E-O biến nguyên tắc đó thành một vòng lặp rõ ràng để mỗi lần nộp bài đều có giá trị, kể cả khi chưa đúng.",
+      steps: [
+        {
+          letter: "P",
+          word: "Problem",
+          body: "Bạn nhận một thử thách đủ thật để lộ ra cách bạn đang tư duy, chứ không chỉ kiểm tra bạn còn nhớ gì.",
+        },
+        {
+          letter: "D",
+          word: "Done",
+          body: "Bạn chốt một lần thử. Hành động nộp bài là điểm khởi đầu, vì tiến bộ chỉ bắt đầu khi suy nghĩ được đặt xuống rõ ràng.",
+        },
+        {
+          letter: "E",
+          word: "Execute",
+          body: "D-Friend đánh giá cách làm và đáp án như hai tín hiệu riêng, để phản hồi vào bản chất thay vì chỉ nhìn bề mặt.",
+        },
+        {
+          letter: "O",
+          word: "Optimize",
+          body: "Phản hồi tiếp theo được chỉnh theo trạng thái thật của bạn: đẩy thêm, giữ vững cách làm đúng, hoặc can thiệp nhẹ khi bạn bắt đầu loay hoay.",
         },
       ],
     },

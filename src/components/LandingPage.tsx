@@ -1,18 +1,23 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { LandingCopy } from "@/content/landing";
 import Hero from "@/components/Hero";
+import TopBar from "@/components/TopBar";
 import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
+import Differentiation from "@/components/Differentiation";
+import CoreEngine from "@/components/CoreEngine";
 import StudyBuddy from "@/components/StudyBuddy";
 import Progress from "@/components/Progress";
 import Footer from "@/components/Footer";
 
 const SECTION_TOUR_STOPS = [
   { id: "landing-philosophy", block: "start" as const },
-  { id: "landing-experience", block: "center" as const },
   { id: "landing-study-buddy", block: "start" as const },
+  { id: "landing-experience", block: "center" as const },
+  { id: "landing-core-engine", block: "start" as const },
+  { id: "landing-differentiation", block: "start" as const },
   { id: "landing-progress", block: "start" as const },
   { id: "landing-footer", block: "start" as const },
 ] as const;
@@ -20,6 +25,7 @@ const SECTION_TOUR_STOPS = [
 export default function LandingPage({ copy }: { copy: LandingCopy }) {
   const isTourRunningRef = useRef(false);
   const activeRunIdRef = useRef(0);
+  const [isIntroComplete, setIsIntroComplete] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -50,6 +56,19 @@ export default function LandingPage({ copy }: { copy: LandingCopy }) {
     }
   }, []);
 
+  const handleSectionNavigate = useCallback((href: string) => {
+    const sectionId = href.startsWith("#") ? href.slice(1) : href;
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      window.location.hash = href;
+      return;
+    }
+
+    section.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.history.replaceState(null, "", href);
+  }, []);
+
   return (
     <main className="relative overflow-hidden">
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-80" />
@@ -61,10 +80,25 @@ export default function LandingPage({ copy }: { copy: LandingCopy }) {
       <div className="pointer-events-none absolute left-1/2 top-[170rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[160px]" />
       <div className="pointer-events-none absolute left-[10%] top-[215rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[140px]" />
       <div className="relative z-10">
-        <Hero content={copy.hero} onDemoClick={handleDemoTour} />
+        <TopBar
+          content={copy.navigation}
+          actions={copy.hero.actions}
+          onNavigate={handleSectionNavigate}
+          visible={isIntroComplete}
+        />
+        <Hero
+          content={copy.hero}
+          onDemoClick={handleDemoTour}
+          onIntroComplete={() => setIsIntroComplete(true)}
+        />
         <Philosophy content={copy.philosophy} sectionId="landing-philosophy" />
-        <Experience content={copy.experience} sectionId="landing-experience" />
         <StudyBuddy content={copy.studyBuddy} sectionId="landing-study-buddy" />
+        <Experience content={copy.experience} sectionId="landing-experience" />
+        <CoreEngine content={copy.coreEngine} sectionId="landing-core-engine" />
+        <Differentiation
+          content={copy.differentiation}
+          sectionId="landing-differentiation"
+        />
         <Progress content={copy.progress} sectionId="landing-progress" />
         <Footer content={copy.footer} sectionId="landing-footer" />
       </div>

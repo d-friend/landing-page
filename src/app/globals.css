@@ -118,6 +118,10 @@ body {
     background: rgba(34, 211, 238, 0.26);
   }
 
+  .panel-card-emerald::after {
+    background: rgba(16, 185, 129, 0.28);
+  }
+
   .panel-card-soft:hover {
     transform: translateY(-2px);
   }

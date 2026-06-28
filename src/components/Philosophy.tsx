@@ -9,7 +9,7 @@ export default function Philosophy({
   sectionId?: string;
 }) {
   return (
-    <section id={sectionId} className="mx-auto max-w-6xl px-6 py-28">
+    <section id={sectionId} className="mx-auto max-w-6xl scroll-mt-32 px-6 py-28">
       <Reveal className="mb-16 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
           {content.eyebrow}

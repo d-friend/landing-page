@@ -10,9 +10,11 @@ type Phase = "typing" | "zoom" | "morph" | "logo";
 export default function Hero({
   content,
   onDemoClick,
+  onIntroComplete,
 }: {
   content: LandingCopy["hero"];
   onDemoClick?: () => void;
+  onIntroComplete?: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>("typing");
   const [lineIdx, setLineIdx] = useState(0);
@@ -55,6 +57,12 @@ export default function Hero({
     }
   }, [phase]);
 
+  useEffect(() => {
+    if (phase === "logo") {
+      onIntroComplete?.();
+    }
+  }, [onIntroComplete, phase]);
+
   const showD = phase === "morph" || phase === "logo";
   const showContent = phase === "logo";
   const showLargeWord = phase === "zoom" || phase === "morph" || phase === "logo";
@@ -86,34 +94,8 @@ export default function Hero({
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showContent && (
-          <motion.div
-            key="hero-actions"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
-            className="absolute right-6 top-6 z-20 flex items-center gap-3 sm:right-8 sm:top-8"
-          >
-            <a
-              href="https://app.dfriend.online/login"
-              className="rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-medium text-text backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
-            >
-              {content.actions.login}
-            </a>
-            <a
-              href="https://app.dfriend.online/register"
-              className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:-translate-y-0.5 hover:bg-brand/90"
-            >
-              {content.actions.register}
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Fixed height container ensures surrounding elements don't jump during morphs */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center justify-center min-h-[16rem]">
+      <div className="relative z-10 flex min-h-[16rem] w-full max-w-4xl flex-col items-center justify-center pt-28 sm:pt-32">
         
         <motion.div
           animate={{

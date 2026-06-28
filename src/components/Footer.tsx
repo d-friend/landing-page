@@ -11,7 +11,7 @@ export default function Footer({
   return (
     <section
       id={sectionId}
-      className="relative px-6 py-50 text-center"
+      className="relative scroll-mt-32 px-6 py-50 text-center"
     >
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[150px]" />
       <Reveal className="relative z-10 mx-auto max-w-3xl">
