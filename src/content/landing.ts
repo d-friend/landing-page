@@ -223,7 +223,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       eyebrow: "The experience",
       title: "Stop memorizing. Start rewiring.",
       description:
-        "Learning isn't about cramming — it's about breaking old habits and building new mental models. D-Friend tackles every concept across a perfectly balanced two-session arc.",
+        "Learning isn't about cramming. It's about breaking old habits, building new mental models, and moving through a balanced two-session arc with D-Friend.",
       sessionOne: {
         label: "Session 1",
         title: "The Foundation",
@@ -454,7 +454,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       eyebrow: "Trải nghiệm",
       title: "Đừng học vẹt. Hãy tái cấu trúc tư duy.",
       description:
-        "Học không phải là nhồi nhét — mà là phá bỏ các thói quen cũ và xây lại mô hình tư duy mới. D-Friend xử lý mỗi khái niệm qua một hành trình hai buổi cân bằng chặt chẽ.",
+        "Học không phải là nhồi nhét. Đó là phá bỏ thói quen cũ, xây mô hình tư duy mới và đi qua hành trình hai buổi cân bằng cùng D-Friend.",
       sessionOne: {
         label: "Buổi 1",
         title: "Nền móng",
