@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function VietnameseLandingPage() {
-  return <LandingPage copy={landingCopy.vi} />;
+  return <LandingPage copy={landingCopy.vi} locale="vi" />;
 }

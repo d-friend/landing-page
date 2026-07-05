@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { LandingCopy } from "@/content/landing";
+import type { LandingCopy, LandingLocale } from "@/content/landing";
 import Hero from "@/components/Hero";
 import TopBar from "@/components/TopBar";
 import Philosophy from "@/components/Philosophy";
@@ -10,6 +10,7 @@ import Differentiation from "@/components/Differentiation";
 import CoreEngine from "@/components/CoreEngine";
 import StudyBuddy from "@/components/StudyBuddy";
 import Progress from "@/components/Progress";
+import ForParents from "@/components/ForParents";
 import Footer from "@/components/Footer";
 
 const SECTION_TOUR_STOPS = [
@@ -19,10 +20,17 @@ const SECTION_TOUR_STOPS = [
   { id: "landing-core-engine", block: "start" as const },
   { id: "landing-differentiation", block: "start" as const },
   { id: "landing-progress", block: "start" as const },
+  { id: "landing-parents", block: "start" as const },
   { id: "landing-footer", block: "start" as const },
 ] as const;
 
-export default function LandingPage({ copy }: { copy: LandingCopy }) {
+export default function LandingPage({
+  copy,
+  locale = "en",
+}: {
+  copy: LandingCopy;
+  locale?: LandingLocale;
+}) {
   const isTourRunningRef = useRef(false);
   const activeRunIdRef = useRef(0);
   const [isIntroComplete, setIsIntroComplete] = useState(false);
@@ -70,18 +78,14 @@ export default function LandingPage({ copy }: { copy: LandingCopy }) {
   }, []);
 
   return (
-    <main className="relative overflow-hidden">
-      <div className="grid-bg pointer-events-none absolute inset-0 opacity-80" />
-      <div className="pointer-events-none absolute left-1/2 top-[12rem] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-brand/15 blur-[140px]" />
-      <div className="pointer-events-none absolute left-[18%] top-[42rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
-      <div className="pointer-events-none absolute right-[12%] top-[78rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[140px]" />
-      <div className="pointer-events-none absolute left-[14%] top-[112rem] h-[34rem] w-[34rem] rounded-full bg-accent/12 blur-[150px]" />
-      <div className="pointer-events-none absolute right-[10%] top-[142rem] h-[38rem] w-[38rem] rounded-full bg-brand/15 blur-[160px]" />
-      <div className="pointer-events-none absolute left-1/2 top-[170rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[160px]" />
-      <div className="pointer-events-none absolute left-[10%] top-[215rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[140px]" />
-      <div className="pointer-events-none absolute right-[12%] top-[250rem] h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[140px]" />
-      <div className="pointer-events-none absolute left-[12%] top-[280rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[140px]" />
-      <div className="pointer-events-none absolute right-[10%] top-[310rem] h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[140px]" />
+    <main data-locale={locale} className="relative overflow-hidden">
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-70" />
+      <div className="pointer-events-none absolute left-1/2 top-[10rem] h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[140px]" />
+      <div className="pointer-events-none absolute left-[16%] top-[46rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-green/8 blur-[130px]" />
+      <div className="pointer-events-none absolute right-[10%] top-[86rem] h-[30rem] w-[30rem] rounded-full bg-brand/8 blur-[140px]" />
+      <div className="pointer-events-none absolute left-[12%] top-[132rem] h-[32rem] w-[32rem] rounded-full bg-green/8 blur-[150px]" />
+      <div className="pointer-events-none absolute right-[12%] top-[180rem] h-[32rem] w-[32rem] rounded-full bg-brand/8 blur-[150px]" />
+      <div className="pointer-events-none absolute left-[14%] top-[230rem] h-[30rem] w-[30rem] rounded-full bg-green/8 blur-[140px]" />
       <div className="relative z-10">
         <TopBar
           content={copy.navigation}
@@ -103,6 +107,7 @@ export default function LandingPage({ copy }: { copy: LandingCopy }) {
           sectionId="landing-differentiation"
         />
         <Progress content={copy.progress} sectionId="landing-progress" />
+        <ForParents content={copy.parents} sectionId="landing-parents" />
         <Footer content={copy.footer} sectionId="landing-footer" />
       </div>
     </main>

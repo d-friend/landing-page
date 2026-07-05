@@ -142,6 +142,19 @@ export type LandingCopy = {
     };
     footnote: string;
   };
+  parents: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cards: Array<{
+      title: string;
+      body: string;
+    }>;
+    note: {
+      title: string;
+      body: string;
+    };
+  };
   footer: {
     title: string;
     body: string;
@@ -166,6 +179,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         { label: "Core Engine", href: "#landing-core-engine" },
         { label: "Difference", href: "#landing-differentiation" },
         { label: "Progress", href: "#landing-progress" },
+        { label: "For Parents", href: "#landing-parents" },
       ],
     },
     hero: {
@@ -266,38 +280,38 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       ],
     },
     differentiation: {
-      eyebrow: "Why D-Friend is different",
-      title: "More than a chat UI with a smarter prompt.",
+      eyebrow: "Why not just ChatGPT?",
+      title: "Homework done isn't the same as learning done.",
       description:
-        "Most AI study products stop at answer checking. D-Friend is built to interpret attempts, separate signal from noise, and respond based on where your thinking is actually going.",
-      genericLabel: "Typical AI study tool",
+        "Paste a problem into a generic chatbot and it hands back the solution. The homework gets finished — the learning never happens. D-Friend is built so the thinking always stays with the student.",
+      genericLabel: "Generic AI chatbot",
       dfriendLabel: "D-Friend",
       genericPoints: [
         {
-          title: "One reply tries to do everything.",
-          body: "Feedback, diagnosis, and encouragement all get blended together, so the product reacts to output instead of understanding the attempt.",
+          title: "Gives the answer away.",
+          body: "Paste the problem, copy the solution, move on. It feels productive — and teaches nothing.",
         },
         {
-          title: "Wrong is treated as one category.",
-          body: "A thoughtful mistake and a random guess often receive the same kind of response, which makes the help feel generic fast.",
+          title: "Treats every mistake the same.",
+          body: "A thoughtful attempt and a wild guess get the same canned reply, so students quickly stop reading the feedback.",
         },
         {
-          title: "Progress is prompt-deep, not product-deep.",
-          body: "State lives inside conversation context, so continuity gets fragile as sessions get longer or more complex.",
+          title: "Forgets you tomorrow.",
+          body: "Every chat starts from zero. It has no idea what you struggled with last week or what you've already mastered.",
         },
       ],
       dfriendPoints: [
         {
-          title: "Reasoning is separated from response.",
-          body: "D-Friend first interprets the attempt, then decides how to help, so encouragement never replaces judgment and judgment never kills momentum.",
+          title: "Never gives the answer away.",
+          body: "It asks the questions that help you find the mistake yourself — because the discovery you make on your own is the one that sticks.",
         },
         {
-          title: "It distinguishes effort from drift.",
-          body: "The system can tell when your method is promising, when your logic broke late, and when you have stopped genuinely engaging with the problem.",
+          title: "Reads the attempt, not just the answer.",
+          body: "It can tell a promising method from a lucky guess, and responds to how you're actually thinking — push harder, steady a good idea, or step in gently.",
         },
         {
-          title: "Progress has memory outside the model.",
-          body: "Attempts, unlocks, and momentum are tracked as product state, which keeps the learning arc consistent from one session to the next.",
+          title: "Remembers the whole journey.",
+          body: "Attempts, breakthroughs, and progress carry across sessions, so every new session picks up exactly where the last one ended.",
         },
       ],
     },
@@ -375,6 +389,30 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       footnote:
         "D-Friend knows the difference between trying and guessing. Spamming answers pauses your progress — honest mistakes build your foundation.",
     },
+    parents: {
+      eyebrow: "For parents",
+      title: "Built so you never have to wonder what's going on.",
+      description:
+        "D-Friend isn't a black box your child disappears into. It's designed to work with teachers, keep exercise quality under control, and show progress you can actually trust.",
+      cards: [
+        {
+          title: "A teacher stays in the loop",
+          body: "After every session, D-Friend's Teacher Copilot sends the teacher a clear report — what your child worked on, where they got stuck, and who needs help before falling behind.",
+        },
+        {
+          title: "Exercises written by real teachers",
+          body: "Every problem comes from a structured exercise bank built and continuously reviewed by educators. The AI composes from it — it never invents unverified content.",
+        },
+        {
+          title: "Progress that reflects real effort",
+          body: "The bar only moves on genuine attempts. Random guessing pauses it, so the progress you see means your child is actually doing the work.",
+        },
+      ],
+      note: {
+        title: "Built with schools, not around them",
+        body: "D-Friend runs in real classrooms with real teachers. The lesson your child studies at home is the same one their teacher planned — one continuous journey, not another app on the side.",
+      },
+    },
     footer: {
       title: "Ready to change how you learn?",
       body: "The curriculum is set. The concepts are waiting. Your buddy is online.",
@@ -397,6 +435,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         { label: "Core Engine", href: "#landing-core-engine" },
         { label: "Khác biệt", href: "#landing-differentiation" },
         { label: "Tiến độ", href: "#landing-progress" },
+        { label: "Phụ huynh", href: "#landing-parents" },
       ],
     },
     hero: {
@@ -447,7 +486,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         title: 'Còn "Friend" thì đúng nghĩa là một người bạn.',
         subtitle: "Một người đồng hành, không phải người giảng bài.",
         body:
-          "D-Friend không được lập trình để đứng lớp và giảng cho bạn. Đây là một AI được thiết kế để làm bạn đồng hành. Nó đi theo nhịp của bạn, làm việc cùng bạn, và không bao giờ nói chuyện theo kiểu bề trên. Khi bạn sai, nó không phán xét — nó פשוט cùng bạn tháo gỡ vấn đề.",
+          "D-Friend không được lập trình để đứng lớp và giảng cho bạn. Đây là một AI được thiết kế để làm bạn đồng hành. Nó đi theo nhịp của bạn, làm việc cùng bạn, và không bao giờ nói chuyện theo kiểu bề trên. Khi bạn sai, nó không phán xét — nó chỉ đơn giản cùng bạn tháo gỡ vấn đề.",
       },
     },
     experience: {
@@ -497,38 +536,38 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       ],
     },
     differentiation: {
-      eyebrow: "Vì sao D-Friend khác biệt",
-      title: "Không chỉ là chatbot học tập với prompt hay hơn.",
+      eyebrow: "Sao không dùng ChatGPT luôn?",
+      title: "Làm xong bài tập không có nghĩa là đã học được.",
       description:
-        "Phần lớn công cụ AI chỉ dừng ở việc chấm đúng sai. D-Friend được thiết kế để đọc nỗ lực, tách tín hiệu khỏi nhiễu, và phản hồi dựa trên hướng suy nghĩ thật sự của bạn.",
-      genericLabel: "Công cụ AI học tập thông thường",
+        "Dán đề bài vào một chatbot thông thường, nó sẽ đưa ngay lời giải. Bài tập thì xong — nhưng việc học chưa từng diễn ra. D-Friend được thiết kế để phần suy nghĩ luôn thuộc về học sinh.",
+      genericLabel: "Chatbot AI thông thường",
       dfriendLabel: "D-Friend",
       genericPoints: [
         {
-          title: "Một câu trả lời gánh toàn bộ công việc.",
-          body: "Phản hồi, chẩn đoán và động viên bị trộn vào cùng một lượt sinh nội dung, nên sản phẩm chỉ phản ứng với kết quả bề mặt.",
+          title: "Đưa luôn đáp án.",
+          body: "Dán đề, chép lời giải, làm bài tiếp. Cảm giác rất năng suất — nhưng không dạy được điều gì.",
         },
         {
-          title: "Sai bị xem như một loại duy nhất.",
-          body: "Một lỗi có suy nghĩ và một cú đoán mò thường nhận cùng kiểu phản hồi, khiến trải nghiệm nhanh chóng trở nên chung chung.",
+          title: "Mọi lỗi sai đều bị xử lý giống nhau.",
+          body: "Một lần thử nghiêm túc và một cú đoán bừa nhận cùng kiểu phản hồi rập khuôn, nên học sinh nhanh chóng bỏ qua phần nhận xét.",
         },
         {
-          title: "Tiến độ nằm trong prompt, không nằm trong sản phẩm.",
-          body: "Trạng thái phụ thuộc vào ngữ cảnh hội thoại, nên càng học dài hoặc phức tạp thì độ ổn định càng giảm.",
+          title: "Ngày mai là quên bạn ngay.",
+          body: "Mỗi cuộc trò chuyện bắt đầu từ con số không. Nó không biết tuần trước bạn vướng ở đâu hay đã vững phần nào.",
         },
       ],
       dfriendPoints: [
         {
-          title: "Suy luận được tách khỏi phản hồi.",
-          body: "D-Friend đọc nỗ lực trước rồi mới quyết định cách hỗ trợ, nên động viên không thay cho đánh giá và đánh giá cũng không làm mất đà học.",
+          title: "Không bao giờ đưa sẵn đáp án.",
+          body: "Nó đặt những câu hỏi giúp bạn tự tìm ra lỗi sai của mình — vì điều bạn tự khám phá mới là điều ở lại lâu nhất.",
         },
         {
-          title: "Phân biệt được cố gắng với lệch hướng.",
-          body: "Hệ thống nhận ra khi phương pháp của bạn có tiềm năng, khi logic chỉ vỡ ở đoạn cuối, và khi bạn đã ngừng thật sự bám vào bài toán.",
+          title: "Đọc cách làm, không chỉ chấm đáp án.",
+          body: "Nó phân biệt được một hướng đi tiềm năng với một cú đoán may mắn, và phản hồi theo đúng cách bạn đang tư duy — đẩy thêm, giữ vững, hoặc can thiệp nhẹ.",
         },
         {
-          title: "Tiến độ có bộ nhớ nằm ngoài mô hình.",
-          body: "Lần thử, mốc mở khóa và momentum được lưu như trạng thái của sản phẩm, giúp hành trình học giữ được tính nhất quán qua nhiều buổi.",
+          title: "Ghi nhớ cả hành trình.",
+          body: "Lần thử, bước đột phá và tiến độ được giữ qua từng buổi học, nên buổi mới luôn bắt đầu đúng chỗ buổi trước dừng lại.",
         },
       ],
     },
@@ -605,6 +644,30 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       },
       footnote:
         "D-Friend biết phân biệt giữa cố gắng thật sự và đoán mò. Spam đáp án sẽ làm tiến độ tạm dừng — còn những sai lầm trung thực sẽ xây nền móng cho bạn.",
+    },
+    parents: {
+      eyebrow: "Dành cho phụ huynh",
+      title: "Được thiết kế để bạn không bao giờ phải đoán con đang học gì.",
+      description:
+        "D-Friend không phải một chiếc hộp đen mà con bạn biến mất vào trong đó. Nó được xây để làm việc cùng giáo viên, kiểm soát chất lượng bài tập, và cho bạn thấy tiến độ thật sự đáng tin.",
+      cards: [
+        {
+          title: "Luôn có giáo viên đồng hành",
+          body: "Sau mỗi buổi học, Teacher Copilot của D-Friend gửi cho giáo viên một báo cáo rõ ràng — con bạn đã học gì, vướng ở đâu, và em nào cần hỗ trợ trước khi bị tụt lại.",
+        },
+        {
+          title: "Bài tập do giáo viên thật biên soạn",
+          body: "Mọi bài toán đều đến từ ngân hàng bài tập được xây dựng theo cấu trúc chuẩn và được đội ngũ chuyên môn rà soát liên tục. AI chỉ tổ hợp từ đó — không bao giờ tự bịa nội dung chưa kiểm chứng.",
+        },
+        {
+          title: "Tiến độ phản ánh nỗ lực thật",
+          body: "Thanh tiến độ chỉ tăng khi con thực sự làm bài. Đoán bừa sẽ khiến nó tạm dừng — nên tiến độ bạn nhìn thấy nghĩa là con đang học thật.",
+        },
+      ],
+      note: {
+        title: "Xây cùng nhà trường, không đi vòng qua nhà trường",
+        body: "D-Friend đang chạy trong những lớp học thật với giáo viên thật. Bài con học ở nhà chính là bài giáo viên đã soạn trên lớp — một hành trình liền mạch, không phải thêm một ứng dụng bên lề.",
+      },
     },
     footer: {
       title: "Sẵn sàng thay đổi cách bạn học chưa?",

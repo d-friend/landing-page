@@ -11,24 +11,32 @@ export default function Footer({
   return (
     <section
       id={sectionId}
-      className="relative scroll-mt-32 px-6 py-50 text-center"
+      className="relative scroll-mt-32 bg-espresso px-6 py-36 text-center sm:py-44"
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[150px]" />
       <Reveal className="relative z-10 mx-auto max-w-3xl">
-        <h2 className="text-4xl font-bold sm:text-6xl">{content.title}</h2>
-        <p className="mx-auto mt-6 max-w-xl text-balance text-lg text-muted">
+        <div className="mb-10 flex items-center justify-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand font-display text-xl font-black text-white">
+            D
+          </span>
+          <span className="font-display text-xl font-bold text-bg">D-Friend</span>
+        </div>
+        <h2 className="font-display text-4xl font-extrabold tracking-tight text-bg sm:text-6xl">
+          {content.title}
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-balance text-lg text-cream-on-dark">
           {content.body}
         </p>
         <a
           href="https://app.dfriend.online/login"
-          className="mt-10 inline-block rounded-full bg-brand px-10 py-5 text-lg font-semibold text-white shadow-lg shadow-brand/25 transition hover:scale-[1.03] hover:bg-brand/90"
+          className="mt-10 inline-block rounded-full bg-brand px-10 py-5 font-display text-lg font-bold text-white shadow-lg shadow-brand/30 transition hover:scale-[1.03] hover:bg-brand-deep"
         >
           {content.cta}
         </a>
       </Reveal>
 
-      <div className="relative z-10 mt-24 text-sm text-muted">
-        <span className="font-bold text-text">D-Friend</span> — {content.brandLine}
+      <div className="relative z-10 mt-24 text-sm text-faint">
+        <span className="font-display font-bold text-cream-on-dark">D-Friend</span> —{" "}
+        {content.brandLine}
       </div>
     </section>
   );

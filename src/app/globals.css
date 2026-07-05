@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0f172a;
-  --color-brand: #ff735c;
-  --color-accent: #8b5cf6;
-  --color-text: #f8fafc;
-  --color-muted: #94a3b8;
+  /* D-Friend warm palette — from docs/index.dc.html deck */
+  --color-bg: #faf6ef; /* cream page background */
+  --color-card: #ffffff; /* card surface */
+  --color-sand: #f1e9db; /* soft bubble / inset surface */
+  --color-line: #ede4d4; /* hairline borders */
+  --color-text: #2b241b; /* ink */
+  --color-muted: #6b5f4e; /* body brown */
+  --color-faint: #a39682; /* captions, hints */
+  --color-espresso: #1e1913; /* dark sections */
+  --color-espresso-line: #4a4033; /* borders on dark */
+  --color-cream-on-dark: #e5dac7; /* body text on dark */
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #dc7b40; /* oklch(0.68 0.14 50) */
+  --color-brand-deep: #c06325; /* oklch(0.60 0.14 50) */
+  --color-brand-light: #ffa46e; /* oklch(0.80 0.13 50) — accents on dark */
+  --color-green: #53ad81; /* oklch(0.68 0.11 160) — success / progress */
+
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-gabarito), var(--font-baloo), ui-sans-serif,
+    system-ui, sans-serif;
 }
 
 html {
@@ -21,9 +34,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Gabarito has no Vietnamese subset — VI pages lead with Baloo 2 instead */
+[data-locale="vi"] {
+  --font-display: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
+}
+
 ::selection {
   background-color: var(--color-brand);
-  color: #fff;
+  color: #fff9f0;
 }
 
 @keyframes blink {
@@ -41,8 +59,8 @@ body {
 
 .grid-bg {
   background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(107, 95, 78, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107, 95, 78, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -50,40 +68,14 @@ body {
   .panel-card {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
-      rgba(15, 23, 42, 0.5);
-    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.2);
-    backdrop-filter: blur(14px);
+    border: 2px solid var(--color-line);
+    border-radius: 1.5rem;
+    background: var(--color-card);
+    box-shadow: 0 10px 30px rgba(43, 36, 27, 0.05);
     transition:
       transform 220ms ease,
       border-color 220ms ease,
-      box-shadow 220ms ease,
-      background 220ms ease;
-  }
-
-  .panel-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 55%);
-    opacity: 0.7;
-    transition: opacity 220ms ease;
-  }
-
-  .panel-card::after {
-    content: "";
-    position: absolute;
-    right: -3rem;
-    bottom: -4rem;
-    width: 12rem;
-    height: 12rem;
-    border-radius: 9999px;
-    filter: blur(70px);
-    opacity: 0;
-    transition: opacity 220ms ease, transform 220ms ease;
-    transform: scale(0.9);
+      box-shadow 220ms ease;
   }
 
   .panel-card > * {
@@ -93,36 +85,21 @@ body {
 
   .panel-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 30px 70px rgba(2, 6, 23, 0.32);
-  }
-
-  .panel-card:hover::before {
-    opacity: 1;
-  }
-
-  .panel-card:hover::after {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-
-  .panel-card-brand::after {
-    background: rgba(255, 115, 92, 0.35);
-  }
-
-  .panel-card-accent::after {
-    background: rgba(139, 92, 246, 0.35);
-  }
-
-  .panel-card-cyan::after {
-    background: rgba(34, 211, 238, 0.26);
-  }
-
-  .panel-card-emerald::after {
-    background: rgba(16, 185, 129, 0.28);
+    border-color: #e0d4be;
+    box-shadow: 0 18px 44px rgba(43, 36, 27, 0.1);
   }
 
   .panel-card-soft:hover {
     transform: translateY(-2px);
+  }
+
+  .panel-card-dark {
+    border-color: var(--color-espresso);
+    background: var(--color-espresso);
+    color: var(--color-bg);
+  }
+
+  .panel-card-dark:hover {
+    border-color: var(--color-espresso);
   }
 }
