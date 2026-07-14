@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function EnglishLandingPage() {
-  return <LandingPage copy={landingCopy.en} />;
+  return <LandingPage copy={landingCopy.en} locale="en" />;
 }

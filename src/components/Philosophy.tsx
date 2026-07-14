@@ -1,43 +1,57 @@
-import Reveal from "./Reveal";
 import type { LandingCopy } from "@/content/landing";
+import Reveal from "@/components/Reveal";
 
 export default function Philosophy({
   content,
   sectionId,
 }: {
   content: LandingCopy["philosophy"];
-  sectionId?: string;
+  sectionId: string;
 }) {
   return (
-    <section id={sectionId} className="mx-auto max-w-6xl scroll-mt-32 px-6 py-28">
-      <Reveal className="mb-16 text-center">
-        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
-          {content.eyebrow}
-        </span>
-        <h2 className="mt-4 text-3xl font-bold sm:text-5xl">{content.title}</h2>
-      </Reveal>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <Reveal className="panel-card panel-card-brand rounded-3xl p-8 sm:p-10">
-          <div className="text-5xl font-bold text-brand">{content.done.label}</div>
-          <h3 className="mt-6 text-2xl font-bold">{content.done.title}</h3>
-          <p className="mt-2 text-lg font-medium text-brand">{content.done.subtitle}</p>
-          <p className="mt-4 leading-relaxed text-muted">
-            {content.done.body.split(content.done.emphasis)[0]}
-            <span className="text-text">{content.done.emphasis}</span>
-            {content.done.body.split(content.done.emphasis)[1]}
-          </p>
+    <section id={sectionId} className="border-t border-line bg-surface">
+      <div className="mx-auto max-w-6xl px-5 py-20 md:py-28">
+        <Reveal>
+          <h2 className="headline max-w-2xl text-3xl font-semibold text-ink md:text-4xl">
+            {content.title}
+          </h2>
         </Reveal>
 
-        <Reveal
-          delay={0.1}
-          className="panel-card panel-card-accent rounded-3xl p-8 sm:p-10"
-        >
-          <div className="text-5xl font-bold text-accent">{content.friend.label}</div>
-          <h3 className="mt-6 text-2xl font-bold">{content.friend.title}</h3>
-          <p className="mt-2 text-lg font-medium text-accent">{content.friend.subtitle}</p>
-          <p className="mt-4 leading-relaxed text-muted">{content.friend.body}</p>
-        </Reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-[5fr_7fr]">
+          <Reveal delay={0.08}>
+            <article className="flex h-full flex-col rounded-2xl bg-brand-soft p-8 md:p-10">
+              <p aria-hidden className="font-display text-7xl font-bold leading-none text-brand md:text-8xl">
+                {content.done.label}
+              </p>
+              <h3 className="mt-6 font-display text-xl font-semibold text-ink">
+                {content.done.title}
+              </h3>
+              <p className="mt-1 text-base font-semibold text-brand-deep">
+                {content.done.subtitle}
+              </p>
+              <p className="mt-4 max-w-[52ch] leading-relaxed text-muted">
+                {content.done.body}
+              </p>
+            </article>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <article className="flex h-full flex-col rounded-2xl border border-line p-8 md:p-10">
+              <p aria-hidden className="font-display text-7xl font-bold leading-none text-ink md:text-8xl">
+                {content.friend.label}
+              </p>
+              <h3 className="mt-6 font-display text-xl font-semibold text-ink">
+                {content.friend.title}
+              </h3>
+              <p className="mt-1 text-base font-semibold text-brand-deep">
+                {content.friend.subtitle}
+              </p>
+              <p className="mt-4 max-w-[52ch] leading-relaxed text-muted">
+                {content.friend.body}
+              </p>
+            </article>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

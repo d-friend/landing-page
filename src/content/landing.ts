@@ -1,5 +1,10 @@
 export type LandingLocale = "en" | "vi";
 
+export type ChatMessage = {
+  from: "student" | "buddy";
+  text: string;
+};
+
 export type LandingCopy = {
   metadata: {
     title: string;
@@ -13,47 +18,57 @@ export type LandingCopy = {
     }>;
   };
   hero: {
-    lines: string[];
-    intro: {
-      prefix: string;
-      primary: string;
-      secondary: string;
-      suffix: string;
-    };
-    morph: {
-      basePrimary: string;
-      baseSecondary: string;
-      logoPrimary: string;
-      logoSecondary: string;
-    };
-    summary: {
-      prefix: string;
-      highlight: string;
-      suffix: string;
-    };
+    headlinePre: string;
+    headlineEmphasis: string;
+    headlinePost: string;
+    subtext: string;
     actions: {
       login: string;
       register: string;
     };
-    skipLabel: string;
-    cta: string;
-    scrollHint: string;
+    chat: {
+      problemLabel: string;
+      problemText: string;
+      studentName: string;
+      buddyName: string;
+      messages: ChatMessage[];
+      note: string;
+    };
   };
   philosophy: {
-    eyebrow: string;
     title: string;
     done: {
       label: string;
       title: string;
       subtitle: string;
       body: string;
-      emphasis: string;
     };
     friend: {
       label: string;
       title: string;
       subtitle: string;
       body: string;
+    };
+  };
+  studyBuddy: {
+    title: string;
+    description: string;
+    follow: {
+      title: string;
+      body: string;
+    };
+    doubt: {
+      title: string;
+      beforeLabel: string;
+      before: string;
+      afterLabel: string;
+      after: string;
+    };
+    safety: {
+      title: string;
+      bodyPrefix: string;
+      bodyHighlight: string;
+      bodySuffix: string;
     };
   };
   experience: {
@@ -77,8 +92,59 @@ export type LandingCopy = {
       desc: string;
     }>;
   };
-  differentiation: {
+  coreEngine: {
+    title: string;
+    description: string;
+    steps: Array<{
+      letter: string;
+      word: string;
+      body: string;
+    }>;
+  };
+  progress: {
     eyebrow: string;
+    title: string;
+    description: string;
+    progressLabel: string;
+    rightCard: {
+      title: string;
+      body: string;
+      gain: string;
+    };
+    wrongCard: {
+      title: string;
+      body: string;
+      gain: string;
+    };
+    demo: {
+      correct: string;
+      wrong: string;
+      reset: string;
+      done: string;
+    };
+    footnote: string;
+  };
+  teacher: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    points: Array<{
+      title: string;
+      body: string;
+    }>;
+    report: {
+      title: string;
+      averageLabel: string;
+      averageValue: string;
+      strugglingLabel: string;
+      strugglingValue: string;
+      attentionLabel: string;
+      students: string[];
+      draft: string;
+      publish: string;
+    };
+  };
+  differentiation: {
     title: string;
     description: string;
     genericLabel: string;
@@ -92,60 +158,9 @@ export type LandingCopy = {
       body: string;
     }>;
   };
-  coreEngine: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: Array<{
-      letter: string;
-      word: string;
-      body: string;
-    }>;
-  };
-  studyBuddy: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: [
-      {
-        title: string;
-        body: string;
-      },
-      {
-        title: string;
-        before: string;
-        after: string;
-      },
-      {
-        title: string;
-        bodyPrefix: string;
-        bodyHighlight: string;
-        bodySuffix: string;
-      }
-    ];
-  };
-  progress: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    badge: string;
-    progressLabel: string;
-    rightCard: {
-      title: string;
-      body: string;
-      gain: string;
-    };
-    wrongCard: {
-      title: string;
-      body: string;
-      gain: string;
-    };
-    footnote: string;
-  };
   footer: {
     title: string;
     body: string;
-    cta: string;
     brandLine: string;
   };
 };
@@ -153,77 +168,94 @@ export type LandingCopy = {
 export const landingCopy: Record<LandingLocale, LandingCopy> = {
   en: {
     metadata: {
-      title: "D-Friend — Not a teacher. Not a tutor. Your study buddy.",
+      title: "D-Friend. Not a teacher. Not a tutor. Your study buddy.",
       description:
-        "D-Friend is a new learning engine built on Done > Perfect. An AI peer that learns beside you and refactors how your mind handles hard concepts.",
+        "D-Friend is an AI study buddy built on Done > Perfect. It studies beside your kid, never gives the answer away, and reports back to the teacher.",
     },
     navigation: {
       brand: "D-Friend",
       sections: [
         { label: "Promise", href: "#landing-philosophy" },
-        { label: "Study Buddy", href: "#landing-study-buddy" },
+        { label: "Study buddy", href: "#landing-study-buddy" },
         { label: "Experience", href: "#landing-experience" },
-        { label: "Core Engine", href: "#landing-core-engine" },
-        { label: "Difference", href: "#landing-differentiation" },
         { label: "Progress", href: "#landing-progress" },
+        { label: "Teachers", href: "#landing-teacher" },
       ],
     },
     hero: {
-      lines: [
-        "...stays up late with you.",
-        "...doesn't judge when you get it wrong.",
-        "...figures out the hard stuff right beside you.",
-      ],
-      intro: {
-        prefix: "Everyone wants to have ",
-        primary: " the ",
-        secondary: " friend",
-        suffix: " that",
-      },
-      morph: {
-        basePrimary: "the",
-        baseSecondary: "\u00A0friend",
-        logoPrimary: "D",
-        logoSecondary: "-Friend",
-      },
-      summary: {
-        prefix: "Not a teacher. Not a tutor. ",
-        highlight: "Your ultimate study buddy.",
-        suffix:
-          " A new learning engine designed to completely refactor how your mind processes difficult concepts.",
-      },
+      headlinePre: "The AI that studies ",
+      headlineEmphasis: "with",
+      headlinePost: " your kid.",
+      subtext:
+        "Not a teacher. Not a tutor. A study buddy that never gives the answer away and rewards every honest attempt.",
       actions: {
-        login: "Login",
-        register: "Register",
+        login: "Log in",
+        register: "Try D-Friend",
       },
-      skipLabel: "skip →",
-      cta: "Meet Your D-Friend — Try the Demo",
-      scrollHint: "scroll to meet your friend",
+      chat: {
+        problemLabel: "Problem 2 of 4",
+        problemText: "Find m so that x² + 2x + m = 0 has two distinct roots.",
+        studentName: "You",
+        buddyName: "D-Friend",
+        messages: [
+          { from: "student", text: "I set Δ = 0 and got m = 1." },
+          {
+            from: "buddy",
+            text: "Hmm, I tried m = 1 too, but then I only found one root. Aren't we looking for two different ones?",
+          },
+          { from: "student", text: "Oh right, it should be Δ > 0. So m < 1." },
+          { from: "buddy", text: "That's where I landed as well. Want to submit it?" },
+        ],
+        note: "D-Friend wonders out loud. It never hands over the answer.",
+      },
     },
     philosophy: {
-      eyebrow: "What's in a name?",
       title: "Two letters. One promise.",
       done: {
         label: "D",
-        title: "The \"D\" stands for Done.",
+        title: "The “D” stands for Done.",
         subtitle: "Done > Perfect.",
         body:
-          "Most platforms punish you for failing. We reward you for trying. Our core P-D-E-O engine (Problem → Done → Execute → Optimize) is built on the reality that completion matters more than perfection. Even an incorrect answer moves your progress bar forward — because a mistake is an active step toward mastery.",
-        emphasis: "P-D-E-O engine",
+          "Most platforms punish you for failing. We reward you for trying. Even a wrong answer moves your progress bar forward, because an honest mistake is an active step toward mastery.",
       },
       friend: {
         label: "Friend",
-        title: 'The "Friend" stands for, well, a Friend.',
+        title: "The “Friend” stands for, well, a friend.",
         subtitle: "A peer, not a professor.",
         body:
-          "Your D-Friend isn't programmed to lecture you. It's an AI designed to be your peer. It follows your lead, works alongside you, and never talks down to you. When you mess up, it doesn't judge — it simply figures it out with you.",
+          "D-Friend isn't programmed to lecture. It follows your lead, works beside you, and never talks down to you. When you mess up, it doesn't judge. It figures it out with you.",
+      },
+    },
+    studyBuddy: {
+      title: "How your D-Friend actually thinks",
+      description:
+        "We stripped away the omniscient-teacher AI. D-Friend interacts like the classmate you wish you had.",
+      follow: {
+        title: "It follows, never leads.",
+        body:
+          "You hold the pen. The AI only reacts to your approach. It never hijacks your reasoning with its own.",
+      },
+      doubt: {
+        title: "It voices doubt, not diagnosis.",
+        beforeLabel: "A tutor bot says",
+        before: "“You forgot to carry the 2, which caused an error.”",
+        afterLabel: "D-Friend says",
+        after:
+          "“Hmm, I tried solving it that way, but I got stuck right after the second step. Did we miss something?”",
+      },
+      safety: {
+        title: "It lets you fail safely.",
+        bodyPrefix: "Hit a wall three times? D-Friend initiates a ",
+        bodyHighlight: "soft intervention",
+        bodySuffix:
+          ": it steps back, points you toward the next step without giving the answer away, and lets you choose how to proceed.",
       },
     },
     experience: {
       eyebrow: "The experience",
       title: "Stop memorizing. Start rewiring.",
       description:
-        "Learning isn't about cramming. It's about breaking old habits, building new mental models, and moving through a balanced two-session arc with D-Friend.",
+        "Every concept is a two-session arc: build the foundation on your own, then master it beside your buddy.",
       sessionOne: {
         label: "Session 1",
         title: "The Foundation",
@@ -232,9 +264,9 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       },
       sessionTwo: {
         label: "Session 2",
-        title: "The Mastery Matrix",
+        title: "The Mastery Arc",
         body:
-          "You and your D-Friend sit down to solve exactly 4 precise problems, in order, each designed to rewire your brain.",
+          "You and your D-Friend sit down to solve exactly 4 problems, in a fixed order, each designed to rewire how you think.",
       },
       problems: [
         {
@@ -253,33 +285,113 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
           tag: "P3",
           name: "The Break",
           role: "Exploration",
-          desc:
-            "A non-standard curveball that intentionally breaks your old patterns and forces you to think differently.",
+          desc: "A non-standard curveball that breaks your old patterns and forces you to think differently.",
         },
         {
           tag: "P4",
           name: "The Build",
           role: "Extension",
-          desc:
-            "Apply your newly refactored mindset to a final problem — walking away with unshakeable confidence.",
+          desc: "Apply the new pattern right away, and walk out with confidence that sticks.",
         },
       ],
     },
+    coreEngine: {
+      title: "The P-D-E-O loop keeps learning moving.",
+      description:
+        "One rule shapes every interaction: progress should reward real effort, even when the answer is imperfect.",
+      steps: [
+        {
+          letter: "P",
+          word: "Problem",
+          body: "A concrete challenge with enough friction to reveal how you think, not just what you remember.",
+        },
+        {
+          letter: "D",
+          word: "Done",
+          body: "You commit to an attempt. Movement starts when your thinking leaves your head and hits the page.",
+        },
+        {
+          letter: "E",
+          word: "Execute",
+          body: "D-Friend reads your approach and your answer separately, so it responds to substance, not surface.",
+        },
+        {
+          letter: "O",
+          word: "Optimize",
+          body: "The next reply is tuned to your state: push harder, steady a good method, or step in softly.",
+        },
+      ],
+    },
+    progress: {
+      eyebrow: "Momentum",
+      title: "The progress bar that respects you",
+      description:
+        "Progress only moves when you take a shot and hit submit. Try it yourself:",
+      progressLabel: "Your progress",
+      rightCard: {
+        title: "Get it right?",
+        body: "A big leap forward.",
+        gain: "+20%",
+      },
+      wrongCard: {
+        title: "Get it wrong?",
+        body: "You still step forward. You tried, and that counts.",
+        gain: "+12%",
+      },
+      demo: {
+        correct: "Submit a right answer",
+        wrong: "Submit a wrong answer",
+        reset: "Reset",
+        done: "Concept mastered. That's the whole point.",
+      },
+      footnote:
+        "D-Friend knows the difference between trying and guessing. Spamming answers pauses your progress. Honest mistakes build your foundation.",
+    },
+    teacher: {
+      eyebrow: "Teacher Copilot",
+      title: "Every session reports back to the teacher.",
+      description:
+        "The study buddy is one half of the loop. Teacher Copilot turns what students struggled with into the next lesson plan.",
+      points: [
+        {
+          title: "Sees the whole class, not just scores.",
+          body: "Concept-level insight: which misconceptions repeat, who transferred a new pattern, who quietly got stuck.",
+        },
+        {
+          title: "Drafts targeted extra practice.",
+          body: "Remedial and advanced sets are drafted for exactly the students who need them.",
+        },
+        {
+          title: "Nothing reaches students unreviewed.",
+          body: "Every AI draft stays private until the teacher reviews and publishes it.",
+        },
+      ],
+      report: {
+        title: "Class snapshot",
+        averageLabel: "Class average",
+        averageValue: "6.8",
+        strugglingLabel: "Most common sticking point",
+        strugglingValue: "Sign flips when isolating x (38% of class)",
+        attentionLabel: "Worth a check-in",
+        students: ["Gia Bảo", "Thu Hà", "Minh Khôi"],
+        draft: "Extra practice drafted for 3 students",
+        publish: "Review and publish",
+      },
+    },
     differentiation: {
-      eyebrow: "Why D-Friend is different",
       title: "More than a chat UI with a smarter prompt.",
       description:
-        "Most AI study products stop at answer checking. D-Friend is built to interpret attempts, separate signal from noise, and respond based on where your thinking is actually going.",
+        "Most AI study products stop at answer checking. D-Friend is built to interpret attempts and respond to where your thinking is actually going.",
       genericLabel: "Typical AI study tool",
       dfriendLabel: "D-Friend",
       genericPoints: [
         {
           title: "One reply tries to do everything.",
-          body: "Feedback, diagnosis, and encouragement all get blended together, so the product reacts to output instead of understanding the attempt.",
+          body: "Feedback, diagnosis, and encouragement get blended together, so the product reacts to output instead of understanding the attempt.",
         },
         {
           title: "Wrong is treated as one category.",
-          body: "A thoughtful mistake and a random guess often receive the same kind of response, which makes the help feel generic fast.",
+          body: "A thoughtful mistake and a random guess receive the same kind of response, which makes the help feel generic fast.",
         },
         {
           title: "Progress is prompt-deep, not product-deep.",
@@ -289,172 +401,114 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       dfriendPoints: [
         {
           title: "Reasoning is separated from response.",
-          body: "D-Friend first interprets the attempt, then decides how to help, so encouragement never replaces judgment and judgment never kills momentum.",
+          body: "D-Friend first interprets the attempt, then decides how to help, so encouragement never replaces judgment.",
         },
         {
           title: "It distinguishes effort from drift.",
-          body: "The system can tell when your method is promising, when your logic broke late, and when you have stopped genuinely engaging with the problem.",
+          body: "The system can tell when your method is promising, when your logic broke late, and when you stopped genuinely engaging.",
         },
         {
           title: "Progress has memory outside the model.",
-          body: "Attempts, unlocks, and momentum are tracked as product state, which keeps the learning arc consistent from one session to the next.",
+          body: "Attempts, unlocks, and momentum are tracked as product state, so the learning arc stays consistent across sessions.",
         },
       ],
-    },
-    coreEngine: {
-      eyebrow: "Core Engine",
-      title: "The P-D-E-O loop keeps learning moving.",
-      description:
-        "Every interaction is shaped by a simple rule: progress should reward real effort. P-D-E-O turns that rule into a repeatable loop so each submission becomes useful, even when it is imperfect.",
-      steps: [
-        {
-          letter: "P",
-          word: "Problem",
-          body: "You get a concrete challenge with enough friction to reveal how you currently think, not just what you remember.",
-        },
-        {
-          letter: "D",
-          word: "Done",
-          body: "You commit to an attempt. Submission matters because movement starts when your thinking leaves your head and hits the page.",
-        },
-        {
-          letter: "E",
-          word: "Execute",
-          body: "D-Friend evaluates the work by reading the approach and the answer separately, so it can respond to substance instead of surface.",
-        },
-        {
-          letter: "O",
-          word: "Optimize",
-          body: "The next response is tuned to your actual state: push harder, stabilize a good method, or step in softly when you are spiraling.",
-        },
-      ],
-    },
-    studyBuddy: {
-      eyebrow: "The study buddy model",
-      title: "How your D-Friend actually thinks",
-      description:
-        "We stripped away the \"omniscient teacher\" AI. D-Friend interacts using a radically different approach.",
-      cards: [
-        {
-          title: "It follows, never leads.",
-          body:
-            "You hold the pen. The AI only reacts to your approach — it never hijacks your reasoning with its own.",
-        },
-        {
-          title: "It voices doubt, not diagnosis.",
-          before: "\"You forgot to carry the 2, which caused an error.\"",
-          after:
-            "\"Hmm, I tried solving it that way, but I got stuck right after the second step… did we miss something?\"",
-        },
-        {
-          title: "It lets you fail safely.",
-          bodyPrefix: "Hit a wall three times? D-Friend initiates a ",
-          bodyHighlight: "Soft Intervention",
-          bodySuffix:
-            " — it steps back, points you in the right direction without giving the answer away, and lets you choose how to proceed.",
-        },
-      ],
-    },
-    progress: {
-      eyebrow: "Momentum",
-      title: "The progress bar that respects you",
-      description:
-        "Your effort earns momentum. Progress only moves when you take a shot and hit submit.",
-      badge: "Wrong answer — but you stepped forward",
-      progressLabel: "Your progress",
-      rightCard: {
-        title: "Get it right?",
-        body: "A huge leap forward.",
-        gain: "+20%",
-      },
-      wrongCard: {
-        title: "Get it wrong?",
-        body: "You still step forward. You tried, and that counts.",
-        gain: "+12%",
-      },
-      footnote:
-        "D-Friend knows the difference between trying and guessing. Spamming answers pauses your progress — honest mistakes build your foundation.",
     },
     footer: {
       title: "Ready to change how you learn?",
       body: "The curriculum is set. The concepts are waiting. Your buddy is online.",
-      cta: "Enter D-Friend",
       brandLine: "Done > Perfect.",
     },
   },
   vi: {
     metadata: {
-      title: "D-Friend — Không phải giáo viên. Không phải gia sư. Người bạn học của bạn.",
+      title: "D-Friend. Không phải giáo viên. Không phải gia sư. Người bạn học của bạn.",
       description:
-        "D-Friend là một cỗ máy học tập mới được xây trên tinh thần Done > Perfect. Một AI đồng hành học cùng bạn và tái cấu trúc cách bạn xử lý những khái niệm khó.",
+        "D-Friend là AI bạn học xây trên tinh thần Done > Perfect. Nó học cùng con bạn, không bao giờ lộ đáp án, và báo cáo lại cho giáo viên.",
     },
     navigation: {
       brand: "D-Friend",
       sections: [
         { label: "Lời hứa", href: "#landing-philosophy" },
-        { label: "Study Buddy", href: "#landing-study-buddy" },
+        { label: "Bạn học", href: "#landing-study-buddy" },
         { label: "Trải nghiệm", href: "#landing-experience" },
-        { label: "Core Engine", href: "#landing-core-engine" },
-        { label: "Khác biệt", href: "#landing-differentiation" },
         { label: "Tiến độ", href: "#landing-progress" },
+        { label: "Giáo viên", href: "#landing-teacher" },
       ],
     },
     hero: {
-      lines: [
-        "...thức khuya học cùng bạn.",
-        "...không phán xét khi bạn làm sai.",
-        "...cùng bạn gỡ những phần khó nhất.",
-      ],
-      intro: {
-        prefix: "Ai cũng muốn có ",
-        primary: "người",
-        secondary: " bạn",
-        suffix: " như vậy",
-      },
-      morph: {
-        basePrimary: "người",
-        baseSecondary: "\u00A0bạn",
-        logoPrimary: "D",
-        logoSecondary: "-Friend",
-      },
-      summary: {
-        prefix: "Không phải giáo viên. Không phải gia sư. ",
-        highlight: "Người bạn học đúng nghĩa của bạn.",
-        suffix:
-          " Một cỗ máy học tập mới được thiết kế để tái cấu trúc hoàn toàn cách não bạn xử lý những khái niệm khó.",
-      },
+      headlinePre: "AI học ",
+      headlineEmphasis: "cùng",
+      headlinePost: " con bạn.",
+      subtext:
+        "Không phải giáo viên. Không phải gia sư. Một người bạn học không bao giờ lộ đáp án và luôn ghi nhận mỗi lần bạn dám thử.",
       actions: {
         login: "Đăng nhập",
-        register: "Đăng ký",
+        register: "Dùng thử D-Friend",
       },
-      skipLabel: "bỏ qua →",
-      cta: "Gặp D-Friend của bạn — Thử demo",
-      scrollHint: "cuộn xuống để gặp người bạn này",
+      chat: {
+        problemLabel: "Bài 2 trên 4",
+        problemText: "Tìm m để x² + 2x + m = 0 có hai nghiệm phân biệt.",
+        studentName: "Bạn",
+        buddyName: "D-Friend",
+        messages: [
+          { from: "student", text: "Mình cho Δ = 0 và ra m = 1." },
+          {
+            from: "buddy",
+            text: "Hmm, mình cũng thử m = 1, nhưng lúc đó chỉ ra đúng một nghiệm. Đề bài cần hai nghiệm phân biệt mà nhỉ?",
+          },
+          { from: "student", text: "À đúng rồi, phải là Δ > 0. Vậy m < 1." },
+          { from: "buddy", text: "Mình cũng ra đúng như vậy. Nộp thử luôn nhé?" },
+        ],
+        note: "D-Friend chỉ bày tỏ sự phân vân. Nó không bao giờ đưa sẵn đáp án.",
+      },
     },
     philosophy: {
-      eyebrow: "Cái tên này có gì đặc biệt?",
       title: "Hai chữ. Một lời hứa.",
       done: {
         label: "D",
-        title: 'Chữ "D" là viết tắt của Done.',
+        title: "Chữ “D” là viết tắt của Done.",
         subtitle: "Done > Perfect.",
         body:
-          "Phần lớn nền tảng khiến bạn bị áp lực khi làm sai. Còn chúng tôi ghi nhận việc bạn dám làm. Cốt lõi P-D-E-O engine (Problem → Done → Execute → Optimize) của chúng tôi được xây trên sự thật rằng hoàn thành quan trọng hơn hoàn hảo. Ngay cả một câu trả lời sai vẫn đẩy thanh tiến độ của bạn tiến lên — vì sai lầm là một bước đi chủ động hướng tới sự thành thạo.",
-        emphasis: "P-D-E-O engine",
+          "Phần lớn nền tảng phạt bạn khi làm sai. Chúng tôi ghi nhận việc bạn dám làm. Ngay cả câu trả lời sai vẫn đẩy thanh tiến độ tiến lên, vì một sai lầm trung thực là một bước chủ động hướng tới sự thành thạo.",
       },
       friend: {
         label: "Friend",
-        title: 'Còn "Friend" thì đúng nghĩa là một người bạn.',
+        title: "Còn “Friend” thì đúng nghĩa là một người bạn.",
         subtitle: "Một người đồng hành, không phải người giảng bài.",
         body:
-          "D-Friend không được lập trình để đứng lớp và giảng cho bạn. Đây là một AI được thiết kế để làm bạn đồng hành. Nó đi theo nhịp của bạn, làm việc cùng bạn, và không bao giờ nói chuyện theo kiểu bề trên. Khi bạn sai, nó không phán xét — nó פשוט cùng bạn tháo gỡ vấn đề.",
+          "D-Friend không được lập trình để giảng bài. Nó đi theo nhịp của bạn, học cùng bạn, và không bao giờ nói kiểu bề trên. Khi bạn sai, nó không phán xét. Nó cùng bạn tháo gỡ.",
+      },
+    },
+    studyBuddy: {
+      title: "D-Friend thực sự suy nghĩ như thế nào",
+      description:
+        "Chúng tôi loại bỏ kiểu AI “biết tuốt như giáo viên”. D-Friend tương tác như người bạn cùng lớp mà bạn luôn mong có.",
+      follow: {
+        title: "Nó theo bạn, không dẫn dắt bạn.",
+        body:
+          "Bạn là người cầm bút. AI chỉ phản ứng theo cách bạn tiếp cận vấn đề. Nó không cướp lấy mạch suy nghĩ của bạn.",
+      },
+      doubt: {
+        title: "Nó bày tỏ sự phân vân, không chẩn đoán lỗi sai.",
+        beforeLabel: "Bot gia sư sẽ nói",
+        before: "“Bạn quên nhớ số 2 nên phép tính bị sai.”",
+        afterLabel: "D-Friend sẽ nói",
+        after:
+          "“Hmm, mình thử giải theo cách đó nhưng bị kẹt ngay sau bước thứ hai. Có phải mình bỏ sót điều gì không?”",
+      },
+      safety: {
+        title: "Nó cho phép bạn thất bại một cách an toàn.",
+        bodyPrefix: "Nếu bạn đụng tường ba lần, D-Friend sẽ kích hoạt ",
+        bodyHighlight: "soft intervention",
+        bodySuffix:
+          ": nó lùi lại, chỉ cho bạn đúng hướng mà không làm lộ đáp án, và để bạn tự quyết định bước tiếp theo.",
       },
     },
     experience: {
       eyebrow: "Trải nghiệm",
       title: "Đừng học vẹt. Hãy tái cấu trúc tư duy.",
       description:
-        "Học không phải là nhồi nhét. Đó là phá bỏ thói quen cũ, xây mô hình tư duy mới và đi qua hành trình hai buổi cân bằng cùng D-Friend.",
+        "Mỗi khái niệm là một hành trình hai buổi: tự xây nền móng, rồi làm chủ nó bên cạnh người bạn học.",
       sessionOne: {
         label: "Buổi 1",
         title: "Nền móng",
@@ -463,9 +517,9 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       },
       sessionTwo: {
         label: "Buổi 2",
-        title: "Ma trận làm chủ",
+        title: "Hành trình làm chủ",
         body:
-          "Bạn và D-Friend sẽ cùng ngồi xuống giải đúng 4 bài toán, theo đúng thứ tự, mỗi bài đều được thiết kế để tái cấu trúc não bộ của bạn.",
+          "Bạn và D-Friend cùng ngồi xuống giải đúng 4 bài toán, theo đúng thứ tự, mỗi bài đều được thiết kế để thay đổi cách bạn tư duy.",
       },
       problems: [
         {
@@ -484,23 +538,103 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
           tag: "P3",
           name: "Phá khung",
           role: "Khám phá",
-          desc:
-            "Một cú bẻ lái không theo lối mòn, cố tình phá vỡ các khuôn mẫu cũ và buộc bạn phải nghĩ theo cách khác.",
+          desc: "Một cú bẻ lái không theo lối mòn, phá vỡ khuôn mẫu cũ và buộc bạn nghĩ theo cách khác.",
         },
         {
           tag: "P4",
           name: "Xây lại",
           role: "Mở rộng",
-          desc:
-            "Áp dụng tư duy vừa được tái cấu trúc vào bài cuối cùng — và rời đi với sự tự tin vững chắc.",
+          desc: "Áp dụng ngay tư duy mới, và rời đi với sự tự tin vững chắc.",
         },
       ],
     },
+    coreEngine: {
+      title: "Vòng lặp P-D-E-O giữ việc học luôn tiến lên.",
+      description:
+        "Một nguyên tắc định hình mọi tương tác: nỗ lực thật phải được ghi nhận, kể cả khi chưa đúng.",
+      steps: [
+        {
+          letter: "P",
+          word: "Problem",
+          body: "Một thử thách đủ thật để lộ ra cách bạn đang tư duy, chứ không chỉ kiểm tra bạn còn nhớ gì.",
+        },
+        {
+          letter: "D",
+          word: "Done",
+          body: "Bạn chốt một lần thử. Tiến bộ chỉ bắt đầu khi suy nghĩ được đặt xuống rõ ràng.",
+        },
+        {
+          letter: "E",
+          word: "Execute",
+          body: "D-Friend đọc cách làm và đáp án như hai tín hiệu riêng, để phản hồi vào bản chất thay vì bề mặt.",
+        },
+        {
+          letter: "O",
+          word: "Optimize",
+          body: "Phản hồi tiếp theo bám theo trạng thái thật của bạn: đẩy thêm, giữ vững cách làm đúng, hoặc can thiệp nhẹ.",
+        },
+      ],
+    },
+    progress: {
+      eyebrow: "Động lượng",
+      title: "Thanh tiến độ biết tôn trọng nỗ lực của bạn",
+      description:
+        "Tiến độ chỉ tăng khi bạn thực sự thử và bấm nộp bài. Hãy thử ngay:",
+      progressLabel: "Tiến độ của bạn",
+      rightCard: {
+        title: "Làm đúng thì sao?",
+        body: "Bạn tiến một bước rất lớn.",
+        gain: "+20%",
+      },
+      wrongCard: {
+        title: "Làm sai thì sao?",
+        body: "Bạn vẫn tiến lên. Bạn đã thử, và điều đó có giá trị.",
+        gain: "+12%",
+      },
+      demo: {
+        correct: "Nộp đáp án đúng",
+        wrong: "Nộp đáp án sai",
+        reset: "Làm lại",
+        done: "Đã làm chủ khái niệm. Đó chính là mục tiêu.",
+      },
+      footnote:
+        "D-Friend biết phân biệt giữa cố gắng thật sự và đoán mò. Spam đáp án sẽ làm tiến độ tạm dừng. Những sai lầm trung thực sẽ xây nền móng cho bạn.",
+    },
+    teacher: {
+      eyebrow: "Teacher Copilot",
+      title: "Mỗi buổi học đều báo cáo lại cho giáo viên.",
+      description:
+        "Người bạn học chỉ là một nửa vòng lặp. Teacher Copilot biến những chỗ học sinh vướng thành kế hoạch cho buổi dạy tiếp theo.",
+      points: [
+        {
+          title: "Nhìn thấy cả lớp, không chỉ điểm số.",
+          body: "Insight theo từng khái niệm: lỗi sai nào lặp lại, ai đã bứt phá, ai đang âm thầm bị kẹt.",
+        },
+        {
+          title: "Tự soạn bài luyện thêm đúng chỗ.",
+          body: "Bài củng cố và nâng cao được soạn sẵn cho đúng những học sinh đang cần.",
+        },
+        {
+          title: "Không gì đến học sinh mà chưa qua giáo viên.",
+          body: "Mọi bản nháp AI đều ở chế độ riêng tư cho đến khi giáo viên duyệt và phát hành.",
+        },
+      ],
+      report: {
+        title: "Tổng quan lớp học",
+        averageLabel: "Điểm trung bình lớp",
+        averageValue: "6.8",
+        strugglingLabel: "Điểm vướng phổ biến nhất",
+        strugglingValue: "Sai dấu khi chuyển vế (38% của lớp)",
+        attentionLabel: "Nên hỏi thăm",
+        students: ["Gia Bảo", "Thu Hà", "Minh Khôi"],
+        draft: "Đã soạn bài luyện thêm cho 3 học sinh",
+        publish: "Duyệt và phát hành",
+      },
+    },
     differentiation: {
-      eyebrow: "Vì sao D-Friend khác biệt",
       title: "Không chỉ là chatbot học tập với prompt hay hơn.",
       description:
-        "Phần lớn công cụ AI chỉ dừng ở việc chấm đúng sai. D-Friend được thiết kế để đọc nỗ lực, tách tín hiệu khỏi nhiễu, và phản hồi dựa trên hướng suy nghĩ thật sự của bạn.",
+        "Phần lớn công cụ AI chỉ dừng ở việc chấm đúng sai. D-Friend được thiết kế để đọc nỗ lực và phản hồi theo hướng suy nghĩ thật sự của bạn.",
       genericLabel: "Công cụ AI học tập thông thường",
       dfriendLabel: "D-Friend",
       genericPoints: [
@@ -514,102 +648,27 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         },
         {
           title: "Tiến độ nằm trong prompt, không nằm trong sản phẩm.",
-          body: "Trạng thái phụ thuộc vào ngữ cảnh hội thoại, nên càng học dài hoặc phức tạp thì độ ổn định càng giảm.",
+          body: "Trạng thái phụ thuộc vào ngữ cảnh hội thoại, nên càng học dài thì độ ổn định càng giảm.",
         },
       ],
       dfriendPoints: [
         {
           title: "Suy luận được tách khỏi phản hồi.",
-          body: "D-Friend đọc nỗ lực trước rồi mới quyết định cách hỗ trợ, nên động viên không thay cho đánh giá và đánh giá cũng không làm mất đà học.",
+          body: "D-Friend đọc nỗ lực trước rồi mới quyết định cách hỗ trợ, nên động viên không thay cho đánh giá.",
         },
         {
           title: "Phân biệt được cố gắng với lệch hướng.",
-          body: "Hệ thống nhận ra khi phương pháp của bạn có tiềm năng, khi logic chỉ vỡ ở đoạn cuối, và khi bạn đã ngừng thật sự bám vào bài toán.",
+          body: "Hệ thống nhận ra khi phương pháp có tiềm năng, khi logic chỉ vỡ ở đoạn cuối, và khi bạn đã ngừng thật sự bám vào bài toán.",
         },
         {
           title: "Tiến độ có bộ nhớ nằm ngoài mô hình.",
-          body: "Lần thử, mốc mở khóa và momentum được lưu như trạng thái của sản phẩm, giúp hành trình học giữ được tính nhất quán qua nhiều buổi.",
+          body: "Lần thử, mốc mở khóa và momentum được lưu như trạng thái sản phẩm, giúp hành trình học nhất quán qua nhiều buổi.",
         },
       ],
-    },
-    coreEngine: {
-      eyebrow: "Core Engine",
-      title: "Vòng lặp P-D-E-O giữ việc học luôn tiến lên.",
-      description:
-        "Mọi tương tác đều bám vào một nguyên tắc: nỗ lực thật phải được ghi nhận. P-D-E-O biến nguyên tắc đó thành một vòng lặp rõ ràng để mỗi lần nộp bài đều có giá trị, kể cả khi chưa đúng.",
-      steps: [
-        {
-          letter: "P",
-          word: "Problem",
-          body: "Bạn nhận một thử thách đủ thật để lộ ra cách bạn đang tư duy, chứ không chỉ kiểm tra bạn còn nhớ gì.",
-        },
-        {
-          letter: "D",
-          word: "Done",
-          body: "Bạn chốt một lần thử. Hành động nộp bài là điểm khởi đầu, vì tiến bộ chỉ bắt đầu khi suy nghĩ được đặt xuống rõ ràng.",
-        },
-        {
-          letter: "E",
-          word: "Execute",
-          body: "D-Friend đánh giá cách làm và đáp án như hai tín hiệu riêng, để phản hồi vào bản chất thay vì chỉ nhìn bề mặt.",
-        },
-        {
-          letter: "O",
-          word: "Optimize",
-          body: "Phản hồi tiếp theo được chỉnh theo trạng thái thật của bạn: đẩy thêm, giữ vững cách làm đúng, hoặc can thiệp nhẹ khi bạn bắt đầu loay hoay.",
-        },
-      ],
-    },
-    studyBuddy: {
-      eyebrow: "Mô hình bạn học đồng hành",
-      title: "D-Friend thực sự suy nghĩ như thế nào",
-      description:
-        "Chúng tôi loại bỏ kiểu AI \"biết tuốt như giáo viên\". D-Friend tương tác theo một cách tiếp cận hoàn toàn khác.",
-      cards: [
-        {
-          title: "Nó theo bạn, không dẫn dắt bạn.",
-          body:
-            "Bạn là người cầm bút. AI chỉ phản ứng theo cách bạn tiếp cận vấn đề — nó không cướp lấy mạch suy nghĩ của bạn bằng đáp án của riêng nó.",
-        },
-        {
-          title: "Nó bày tỏ sự phân vân, không chẩn đoán lỗi sai.",
-          before: '"Bạn quên nhớ số 2 nên phép tính bị sai."',
-          after:
-            '"Hmm, mình thử giải theo cách đó nhưng bị kẹt ngay sau bước thứ hai… có phải mình đã bỏ sót điều gì không?"',
-        },
-        {
-          title: "Nó cho phép bạn thất bại một cách an toàn.",
-          bodyPrefix: "Nếu bạn đụng tường ba lần, D-Friend sẽ kích hoạt ",
-          bodyHighlight: "Soft Intervention",
-          bodySuffix:
-            " — nó lùi lại, chỉ cho bạn đúng hướng mà không làm lộ đáp án, và để bạn tự quyết định bước tiếp theo.",
-        },
-      ],
-    },
-    progress: {
-      eyebrow: "Động lượng",
-      title: "Thanh tiến độ biết tôn trọng nỗ lực của bạn",
-      description:
-        "Nỗ lực của bạn tạo ra động lượng. Tiến độ chỉ tăng khi bạn thực sự thử và bấm nộp bài.",
-      badge: "Sai đáp án — nhưng bạn vẫn tiến lên",
-      progressLabel: "Tiến độ của bạn",
-      rightCard: {
-        title: "Làm đúng thì sao?",
-        body: "Bạn tiến một bước rất lớn.",
-        gain: "+20%",
-      },
-      wrongCard: {
-        title: "Làm sai thì sao?",
-        body: "Bạn vẫn tiến lên. Bạn đã thử, và điều đó có giá trị.",
-        gain: "+12%",
-      },
-      footnote:
-        "D-Friend biết phân biệt giữa cố gắng thật sự và đoán mò. Spam đáp án sẽ làm tiến độ tạm dừng — còn những sai lầm trung thực sẽ xây nền móng cho bạn.",
     },
     footer: {
       title: "Sẵn sàng thay đổi cách bạn học chưa?",
       body: "Lộ trình đã sẵn sàng. Các khái niệm đang chờ. Người bạn đồng hành của bạn đã online.",
-      cta: "Vào D-Friend",
       brandLine: "Done > Perfect.",
     },
   },
