@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm light base, single ember accent (evolved from the D-Friend coral) */
-  --color-bg: #fafaf8;
-  --color-surface: #ffffff;
-  --color-ink: #211d1a;
-  --color-muted: #5d564f;
-  --color-line: #e8e4de;
-
-  --color-brand: #c9431f;        /* buttons, emphasis on light bg (4.9:1 with white) */
-  --color-brand-deep: #a23517;   /* text-sized accents, hover */
-  --color-brand-soft: #fbeee8;   /* tinted panels */
-  --color-ok: #3e7d5b;           /* correct/right signals */
-
+  /* Calm Classroom light base for edtech */
+  --color-bg: #f7fafc;           /* Nền xanh trắng rất nhạt, sạch và dễ nhìn cho học tập lâu */
+  --color-surface: #ffffff;      /* Card, block, panel màu trắng để nội dung nổi rõ */
+  --color-ink: #1f2937;          /* Chữ chính xám đậm, rõ ràng nhưng mềm hơn đen thuần */
+  --color-muted: #64748b;        /* Chữ phụ xám xanh, nhẹ nhưng vẫn đủ tương phản */
+  --color-line: #e5e7eb;         /* Viền xám nhạt để chia tách layout tinh tế */
+  
+  --color-brand: #3b82f6;        /* Xanh học tập hiện đại cho nút chính, link, trạng thái active */
+  --color-brand-deep: #2563eb;   /* Xanh đậm hơn cho hover/focus của nút chính */
+  --color-brand-soft: #dbeafe;   /* Nền xanh pastel nhẹ để highlight, selected state, info box */
+  
+  --color-accent: #fde68a;       /* Vàng mềm làm điểm nhấn thân thiện cho badge, icon, progress */
+  --color-ok: #10b981;           /* Xanh mint cho trạng thái thành công/hoàn thành */
+  
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-outfit), var(--font-geist-sans), ui-sans-serif, sans-serif;
 }
