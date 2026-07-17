@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { LandingCopy } from "@/content/landing";
+import LogoMark from "@/components/LogoMark";
 
 const APP_LOGIN = "https://app.dfriend.online/login";
 const APP_REGISTER = "https://app.dfriend.online/register";
@@ -18,8 +19,9 @@ export default function TopBar({
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
-        <a href="#" className="font-display text-lg font-semibold tracking-tight text-ink">
-          <span className="text-brand">D</span>-Friend
+        <a href="#" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink">
+          <LogoMark className="h-9" />
+          D-Friend
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">

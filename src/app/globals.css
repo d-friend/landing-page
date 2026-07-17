@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Calm Classroom light base for edtech */
-  --color-bg: #f7fafc;           /* Nền xanh trắng rất nhạt, sạch và dễ nhìn cho học tập lâu */
+  /* Light base for edtech, drawn from the D-Friend logo palette */
+  --color-bg: #fdfaf7;           /* Nền trắng ấm rất nhạt, sạch và dễ nhìn cho học tập lâu */
   --color-surface: #ffffff;      /* Card, block, panel màu trắng để nội dung nổi rõ */
-  --color-ink: #1f2937;          /* Chữ chính xám đậm, rõ ràng nhưng mềm hơn đen thuần */
-  --color-muted: #64748b;        /* Chữ phụ xám xanh, nhẹ nhưng vẫn đủ tương phản */
-  --color-line: #e5e7eb;         /* Viền xám nhạt để chia tách layout tinh tế */
-  
-  --color-brand: #3b82f6;        /* Xanh học tập hiện đại cho nút chính, link, trạng thái active */
-  --color-brand-deep: #2563eb;   /* Xanh đậm hơn cho hover/focus của nút chính */
-  --color-brand-soft: #dbeafe;   /* Nền xanh pastel nhẹ để highlight, selected state, info box */
-  
-  --color-accent: #fde68a;       /* Vàng mềm làm điểm nhấn thân thiện cho badge, icon, progress */
+  --color-ink: #292524;          /* Chữ chính xám ấm đậm, rõ ràng nhưng mềm hơn đen thuần */
+  --color-muted: #78716c;        /* Chữ phụ xám ấm, nhẹ nhưng vẫn đủ tương phản */
+  --color-line: #e7e5e4;         /* Viền xám ấm nhạt để chia tách layout tinh tế */
+
+  --color-brand: #ff751f;        /* Cam thương hiệu từ logo cho nút chính, link, trạng thái active */
+  --color-brand-deep: #de6113;   /* Cam đậm từ logo cho hover/focus của nút chính */
+  --color-brand-soft: #ffe3d1;   /* Nền cam pastel nhẹ để highlight, selected state, info box */
+
+  --color-accent: #ffaf7e;       /* Cam đào từ logo làm điểm nhấn cho badge, icon, progress */
   --color-ok: #10b981;           /* Xanh mint cho trạng thái thành công/hoàn thành */
   
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;

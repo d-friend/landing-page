@@ -1,5 +1,6 @@
 import type { LandingCopy, LandingLocale } from "@/content/landing";
 import Reveal from "@/components/Reveal";
+import LogoMark from "@/components/LogoMark";
 
 const APP_REGISTER = "https://app.dfriend.online/register";
 
@@ -35,11 +36,9 @@ export default function Footer({
 
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-6 text-sm text-muted">
-          <p>
-            <span className="font-display font-semibold text-ink">
-              <span className="text-brand">D</span>-Friend
-            </span>
-            {" "}
+          <p className="flex items-center gap-2">
+            <LogoMark className="h-6" />
+            <span className="font-display font-semibold text-ink">D-Friend</span>
             <span>{content.brandLine}</span>
           </p>
           <nav className="flex items-center gap-4" aria-label="Language">
