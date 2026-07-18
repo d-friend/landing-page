@@ -3,6 +3,7 @@ import Reveal from "@/components/Reveal";
 import LogoMark from "@/components/LogoMark";
 
 const APP_REGISTER = "https://app.dfriend.online/register";
+const CONTACT_EMAIL = "hello@dfriend.online";
 
 export default function Footer({
   content,
@@ -31,6 +32,15 @@ export default function Footer({
           >
             {registerLabel}
           </a>
+          <p className="mt-8 text-base text-muted">
+            {content.contactLabel}{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-brand-deep hover:decoration-brand"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </p>
         </Reveal>
       </div>
 

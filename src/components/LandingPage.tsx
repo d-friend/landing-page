@@ -21,7 +21,7 @@ export default function LandingPage({
     <>
       <TopBar content={copy.navigation} actions={copy.hero.actions} />
       <main>
-        <Hero content={copy.hero} />
+        <Hero content={copy.hero} locale={locale} />
         <Philosophy content={copy.philosophy} sectionId="landing-philosophy" />
         <StudyBuddy content={copy.studyBuddy} sectionId="landing-study-buddy" />
         <Experience content={copy.experience} sectionId="landing-experience" />
