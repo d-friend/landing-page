@@ -20,7 +20,6 @@ export default function Hero({
   const pilot = content.pilot;
 
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -35,15 +34,14 @@ export default function Hero({
     event.preventDefault();
 
     const trimmedEmail = email.trim();
-    const trimmedPhone = phone.trim();
 
-    if (!trimmedEmail && !trimmedPhone) {
+    if (!trimmedEmail) {
       setStatus("error");
       setMessage(pilot.errorMissing);
       return;
     }
 
-    if (trimmedEmail && !EMAIL_PATTERN.test(trimmedEmail)) {
+    if (!EMAIL_PATTERN.test(trimmedEmail)) {
       setStatus("error");
       setMessage(pilot.errorEmail);
       return;
@@ -58,7 +56,6 @@ export default function Hero({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: trimmedEmail,
-          phone: trimmedPhone,
           company,
           locale,
         }),
@@ -71,7 +68,6 @@ export default function Hero({
       setStatus("sent");
       setMessage(pilot.success);
       setEmail("");
-      setPhone("");
     } catch {
       setStatus("error");
       setMessage(pilot.errorGeneric);
@@ -111,18 +107,14 @@ export default function Hero({
                 className="w-full rounded-full border border-line bg-surface px-5 py-3.5 text-base text-ink transition-colors placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand-soft"
               />
             </label>
-            <label className="flex-1">
-              <span className="sr-only">{pilot.phoneLabel}</span>
-              <input
-                type="tel"
-                name="phone"
-                autoComplete="tel"
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-                placeholder={pilot.phonePlaceholder}
-                className="w-full rounded-full border border-line bg-surface px-5 py-3.5 text-base text-ink transition-colors placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand-soft"
-              />
-            </label>
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="shrink-0 rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-brand-deep active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {status === "sending" ? pilot.submitting : pilot.cta}
+            </button>
           </div>
 
           {/* Honeypot: hidden from humans, irresistible to bots. */}
@@ -136,14 +128,6 @@ export default function Hero({
             onChange={(event) => setCompany(event.target.value)}
             className="absolute left-[-9999px] h-px w-px opacity-0"
           />
-
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="mt-3 w-full rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-brand-deep active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-          >
-            {status === "sending" ? pilot.submitting : pilot.cta}
-          </button>
 
           <p
             role={status === "error" ? "alert" : "status"}

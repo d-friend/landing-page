@@ -31,8 +31,6 @@ export type LandingCopy = {
       submitting: string;
       emailLabel: string;
       emailPlaceholder: string;
-      phoneLabel: string;
-      phonePlaceholder: string;
       hint: string;
       success: string;
       errorMissing: string;
@@ -211,11 +209,9 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         submitting: "Sending…",
         emailLabel: "Email",
         emailPlaceholder: "you@example.com",
-        phoneLabel: "Phone number",
-        phonePlaceholder: "+84 …",
-        hint: "Leave an email or a phone number — either one is enough.",
-        success: "Thanks! We've got your details and will reach out soon.",
-        errorMissing: "Please enter an email or a phone number.",
+        hint: "We'll only email you about the pilot. No spam.",
+        success: "Thanks! We've got your email and will reach out soon.",
+        errorMissing: "Please enter your email address.",
         errorEmail: "That email address doesn't look right.",
         errorGeneric: "Something went wrong. Please try again, or email hello@dfriend.online.",
       },
@@ -478,11 +474,9 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
         submitting: "Đang gửi…",
         emailLabel: "Email",
         emailPlaceholder: "ban@example.com",
-        phoneLabel: "Số điện thoại",
-        phonePlaceholder: "+84 …",
-        hint: "Để lại email hoặc số điện thoại — chỉ cần một trong hai là đủ.",
-        success: "Cảm ơn bạn! Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm.",
-        errorMissing: "Vui lòng nhập email hoặc số điện thoại.",
+        hint: "Chúng tôi chỉ gửi email về chương trình thử nghiệm. Không spam.",
+        success: "Cảm ơn bạn! Chúng tôi đã nhận được email và sẽ liên hệ sớm.",
+        errorMissing: "Vui lòng nhập địa chỉ email của bạn.",
         errorEmail: "Địa chỉ email có vẻ chưa đúng.",
         errorGeneric: "Đã có lỗi xảy ra. Vui lòng thử lại, hoặc gửi mail tới hello@dfriend.online.",
       },
