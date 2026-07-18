@@ -26,6 +26,19 @@ export type LandingCopy = {
       login: string;
       register: string;
     };
+    pilot: {
+      cta: string;
+      submitting: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      phoneLabel: string;
+      phonePlaceholder: string;
+      hint: string;
+      success: string;
+      errorMissing: string;
+      errorEmail: string;
+      errorGeneric: string;
+    };
     chat: {
       problemLabel: string;
       problemText: string;
@@ -162,6 +175,7 @@ export type LandingCopy = {
     title: string;
     body: string;
     brandLine: string;
+    contactLabel: string;
   };
 };
 
@@ -191,6 +205,19 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       actions: {
         login: "Log in",
         register: "Try D-Friend",
+      },
+      pilot: {
+        cta: "Join our pilot",
+        submitting: "Sending…",
+        emailLabel: "Email",
+        emailPlaceholder: "you@example.com",
+        phoneLabel: "Phone number",
+        phonePlaceholder: "+84 …",
+        hint: "Leave an email or a phone number — either one is enough.",
+        success: "Thanks! We've got your details and will reach out soon.",
+        errorMissing: "Please enter an email or a phone number.",
+        errorEmail: "That email address doesn't look right.",
+        errorGeneric: "Something went wrong. Please try again, or email hello@dfriend.online.",
       },
       chat: {
         problemLabel: "Problem 2 of 4",
@@ -417,6 +444,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       title: "Ready to change how you learn?",
       body: "The curriculum is set. The concepts are waiting. Your buddy is online.",
       brandLine: "Done > Perfect.",
+      contactLabel: "Contact us:",
     },
   },
   vi: {
@@ -444,6 +472,19 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       actions: {
         login: "Đăng nhập",
         register: "Dùng thử D-Friend",
+      },
+      pilot: {
+        cta: "Tham gia chương trình thử nghiệm",
+        submitting: "Đang gửi…",
+        emailLabel: "Email",
+        emailPlaceholder: "ban@example.com",
+        phoneLabel: "Số điện thoại",
+        phonePlaceholder: "+84 …",
+        hint: "Để lại email hoặc số điện thoại — chỉ cần một trong hai là đủ.",
+        success: "Cảm ơn bạn! Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm.",
+        errorMissing: "Vui lòng nhập email hoặc số điện thoại.",
+        errorEmail: "Địa chỉ email có vẻ chưa đúng.",
+        errorGeneric: "Đã có lỗi xảy ra. Vui lòng thử lại, hoặc gửi mail tới hello@dfriend.online.",
       },
       chat: {
         problemLabel: "Bài 2 trên 4",
@@ -670,6 +711,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
       title: "Sẵn sàng thay đổi cách bạn học chưa?",
       body: "Lộ trình đã sẵn sàng. Các khái niệm đang chờ. Người bạn đồng hành của bạn đã online.",
       brandLine: "Done > Perfect.",
+      contactLabel: "Liên hệ:",
     },
   },
 };
