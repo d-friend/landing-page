@@ -32,15 +32,6 @@ export default function Footer({
           >
             {registerLabel}
           </a>
-          <p className="mt-8 text-base text-muted">
-            {content.contactLabel}{" "}
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-brand-deep hover:decoration-brand"
-            >
-              {CONTACT_EMAIL}
-            </a>
-          </p>
         </Reveal>
       </div>
 
@@ -51,20 +42,31 @@ export default function Footer({
             <span className="font-display font-semibold text-ink">D-Friend</span>
             <span>{content.brandLine}</span>
           </p>
-          <nav className="flex items-center gap-4" aria-label="Language">
-            <a
-              href="/en"
-              className={`transition-colors hover:text-ink ${locale === "en" ? "font-semibold text-ink" : ""}`}
-            >
-              English
-            </a>
-            <a
-              href="/vi"
-              className={`transition-colors hover:text-ink ${locale === "vi" ? "font-semibold text-ink" : ""}`}
-            >
-              Tiếng Việt
-            </a>
-          </nav>
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <nav className="flex items-center gap-4" aria-label="Language">
+              <a
+                href="/en"
+                className={`transition-colors hover:text-ink ${locale === "en" ? "font-semibold text-ink" : ""}`}
+              >
+                English
+              </a>
+              <a
+                href="/vi"
+                className={`transition-colors hover:text-ink ${locale === "vi" ? "font-semibold text-ink" : ""}`}
+              >
+                Tiếng Việt
+              </a>
+            </nav>
+            <p>
+              {content.contactLabel}{" "}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="text-ink underline decoration-line underline-offset-4 transition-colors hover:text-brand-deep hover:decoration-brand"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

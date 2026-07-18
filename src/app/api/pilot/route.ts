@@ -67,19 +67,14 @@ export async function POST(request: Request) {
   }
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
   const locale = body.locale === "vi" ? "vi" : "en";
 
-  if (!email && !phone) {
+  if (!email) {
     return NextResponse.json({ error: "missing_contact" }, { status: 400 });
   }
 
-  if (email && !EMAIL_PATTERN.test(email)) {
+  if (!EMAIL_PATTERN.test(email) || email.length > 254) {
     return NextResponse.json({ error: "invalid_email" }, { status: 400 });
-  }
-
-  if (email.length > 254 || phone.length > 40) {
-    return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
   const clientKey =
@@ -94,18 +89,16 @@ export async function POST(request: Request) {
   if (!apiKey) {
     console.error("[pilot] RESEND_API_KEY is not set; cannot deliver signup", {
       email,
-      phone,
       locale,
     });
     return NextResponse.json({ error: "email_not_configured" }, { status: 500 });
   }
 
   // Keep newlines out of the subject so nothing can smuggle in extra headers.
-  const subjectHint = (email || phone).replace(/[\r\n]+/g, " ").slice(0, 80);
+  const subjectHint = email.replace(/[\r\n]+/g, " ").slice(0, 80);
   const submittedAt = new Date().toISOString();
   const rows = [
-    ["Email", email || "—"],
-    ["Phone", phone || "—"],
+    ["Email", email],
     ["Language", locale],
     ["Submitted", submittedAt],
   ];
