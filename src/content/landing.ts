@@ -111,6 +111,16 @@ export type LandingCopy = {
       word: string;
       body: string;
     }>;
+    gap: {
+      label: string;
+      title: string;
+      plannedLabel: string;
+      planned: string;
+      realityLabel: string;
+      reality: string;
+      body: string;
+    };
+    loop: string;
   };
   progress: {
     eyebrow: string;
@@ -321,29 +331,40 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
     coreEngine: {
       title: "The P-D-E-O loop keeps learning moving.",
       description:
-        "One rule shapes every interaction: progress should reward real effort, even when the answer is imperfect.",
+        "Four steps, run in order, on every concept. The interesting part is the distance between step two and step three.",
       steps: [
         {
           letter: "P",
           word: "Problem",
-          body: "A concrete challenge with enough friction to reveal how you think, not just what you remember.",
+          body: "You restate the problem in your own words. If you can't say what's being asked, that's the first thing to fix.",
         },
         {
           letter: "D",
           word: "Done",
-          body: "You commit to an attempt. Movement starts when your thinking leaves your head and hits the page.",
+          body: "You settle on a raw solution. Not polished, not verified — just a real idea of how you'd get there.",
         },
         {
           letter: "E",
           word: "Execute",
-          body: "D-Friend reads your approach and your answer separately, so it responds to substance, not surface.",
+          body: "You actually carry out your own plan, step by step. This is where an idea meets the details it skipped.",
         },
         {
           letter: "O",
           word: "Optimize",
-          body: "The next reply is tuned to your state: push harder, steady a good method, or step in softly.",
+          body: "Whatever tripped you up becomes what you carry back to P. The loop restarts with a sharper question.",
         },
       ],
+      gap: {
+        label: "D → E",
+        title: "Knowing how is not the same as doing it.",
+        plannedLabel: "D — in your head",
+        planned: "Just use the discriminant and solve for m. Easy.",
+        realityLabel: "E — on the page",
+        reality: "Wait, is it Δ > 0 or Δ ≥ 0 for two distinct roots?",
+        body:
+          "Most students stop at D and assume they understand. The plan sounds complete right up until you run it. That distance between a confident idea and a working solution is the whole point of the loop, and it's the part D-Friend refuses to let you skip.",
+      },
+      loop: "O sends you back to P with a sharper question, not a finished answer.",
     },
     progress: {
       eyebrow: "Momentum",
@@ -586,29 +607,40 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
     coreEngine: {
       title: "Vòng lặp P-D-E-O giữ việc học luôn tiến lên.",
       description:
-        "Một nguyên tắc định hình mọi tương tác: nỗ lực thật phải được ghi nhận, kể cả khi chưa đúng.",
+        "Bốn bước, làm theo đúng thứ tự, cho mọi khái niệm. Phần thú vị nằm ở khoảng cách giữa bước hai và bước ba.",
       steps: [
         {
           letter: "P",
           word: "Problem",
-          body: "Một thử thách đủ thật để lộ ra cách bạn đang tư duy, chứ không chỉ kiểm tra bạn còn nhớ gì.",
+          body: "Bạn đặt lại vấn đề bằng lời của mình. Nếu chưa nói được đề đang hỏi gì, thì đó là thứ cần sửa trước tiên.",
         },
         {
           letter: "D",
           word: "Done",
-          body: "Bạn chốt một lần thử. Tiến bộ chỉ bắt đầu khi suy nghĩ được đặt xuống rõ ràng.",
+          body: "Bạn chốt một cách làm thô. Chưa gọn, chưa kiểm chứng — chỉ cần là một hướng đi thật của riêng bạn.",
         },
         {
           letter: "E",
           word: "Execute",
-          body: "D-Friend đọc cách làm và đáp án như hai tín hiệu riêng, để phản hồi vào bản chất thay vì bề mặt.",
+          body: "Bạn bắt tay làm thật theo đúng cách của mình, từng bước. Đây là lúc ý tưởng gặp những chi tiết nó đã bỏ qua.",
         },
         {
           letter: "O",
           word: "Optimize",
-          body: "Phản hồi tiếp theo bám theo trạng thái thật của bạn: đẩy thêm, giữ vững cách làm đúng, hoặc can thiệp nhẹ.",
+          body: "Chỗ vừa vấp trở thành thứ bạn mang ngược về P. Vòng lặp bắt đầu lại với một câu hỏi sắc hơn.",
         },
       ],
+      gap: {
+        label: "D → E",
+        title: "Biết cách làm không đồng nghĩa với làm được.",
+        plannedLabel: "D — trong đầu",
+        planned: "Cứ tính delta rồi giải ra m thôi. Dễ mà.",
+        realityLabel: "E — trên giấy",
+        reality: "Khoan, hai nghiệm phân biệt thì Δ > 0 hay Δ ≥ 0 nhỉ?",
+        body:
+          "Phần lớn học sinh dừng ở D và tưởng mình đã hiểu. Kế hoạch nghe rất trọn vẹn, cho tới lúc bắt tay làm thật. Chính khoảng cách giữa một ý tưởng tự tin và một lời giải chạy được mới là điều vòng lặp này nhắm tới, và đó cũng là phần D-Friend không cho bạn bỏ qua.",
+      },
+      loop: "O đưa bạn quay lại P với một câu hỏi sắc hơn, chứ không phải một đáp án đã xong.",
     },
     progress: {
       eyebrow: "Động lượng",
