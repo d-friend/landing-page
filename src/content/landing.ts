@@ -197,7 +197,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
     hero: {
       headlinePre: "The AI that studies ",
       headlineEmphasis: "with",
-      headlinePost: " your kid.",
+      headlinePost: " you.",
       subtext:
         "Not a teacher. Not a tutor. A study buddy that never gives the answer away and rewards every honest attempt.",
       actions: {
@@ -462,7 +462,7 @@ export const landingCopy: Record<LandingLocale, LandingCopy> = {
     hero: {
       headlinePre: "AI học ",
       headlineEmphasis: "cùng",
-      headlinePost: " con bạn.",
+      headlinePost: " bạn.",
       subtext:
         "Không phải giáo viên. Không phải gia sư. Một người bạn học không bao giờ lộ đáp án và luôn ghi nhận mỗi lần bạn dám thử.",
       actions: {
