@@ -32,6 +32,55 @@ export default function CoreEngine({
           </Reveal>
         ))}
       </ol>
+
+      <Reveal delay={0.32}>
+        <div className="mt-14 overflow-hidden rounded-2xl border border-line bg-surface">
+          <div className="px-6 py-6 sm:px-8">
+            <span className="font-display text-sm font-bold tracking-wide text-brand">
+              {content.gap.label}
+            </span>
+            <h3 className="headline mt-1 text-xl font-semibold text-ink md:text-2xl">
+              {content.gap.title}
+            </h3>
+          </div>
+
+          <div className="relative grid gap-px border-y border-line bg-line sm:grid-cols-2">
+            <div className="bg-surface px-6 py-6 sm:px-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                {content.gap.plannedLabel}
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink">“{content.gap.planned}”</p>
+            </div>
+            <div className="bg-surface px-6 py-6 sm:px-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                {content.gap.realityLabel}
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink">“{content.gap.reality}”</p>
+            </div>
+
+            {/* Sits on the hairline so the jump between the two reads as a gap. */}
+            <span
+              aria-hidden="true"
+              className="absolute left-1/2 top-1/2 hidden h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-bg font-display text-base font-bold text-brand sm:flex"
+            >
+              →
+            </span>
+          </div>
+
+          <p className="px-6 py-6 text-sm leading-relaxed text-muted sm:px-8">
+            {content.gap.body}
+          </p>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.38}>
+        <p className="mt-6 flex items-start gap-2 text-sm leading-relaxed text-muted">
+          <span aria-hidden="true" className="text-brand">
+            ↺
+          </span>
+          {content.loop}
+        </p>
+      </Reveal>
     </section>
   );
 }
