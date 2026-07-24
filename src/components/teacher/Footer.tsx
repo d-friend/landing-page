@@ -16,7 +16,7 @@ export default function TeacherFooter({
   sectionId: string;
 }) {
   return (
-    <footer id={sectionId} className="border-t border-line">
+    <footer id={sectionId} className="scroll-mt-20 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-20 text-center md:py-28">
         <Reveal>
           <h2 className="headline mx-auto max-w-2xl text-3xl font-semibold text-ink md:text-5xl">

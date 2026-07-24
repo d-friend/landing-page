@@ -22,7 +22,7 @@ export default function TeacherLandingPage({
     <>
       <TopBar
         sections={copy.navigation.sections}
-        primary={{ label: copy.navigation.cta, href: "#teacher-signup" }}
+        primary={{ label: copy.navigation.cta, href: "#teacher-footer" }}
         homeHref={audiencePath.teacher[locale]}
       />
       <main>
