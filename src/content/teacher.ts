@@ -11,7 +11,10 @@ export type TeacherCopy = {
     cta: string;
   };
   hero: {
-    headline: string;
+    /** Split so the pivotal phrase can carry the brand colour, as on the student hero. */
+    headlinePre: string;
+    headlineEmphasis: string;
+    headlinePost: string;
     subheadline: string;
     pilot: PilotFormCopy;
     snapshot: {
@@ -125,9 +128,11 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
       cta: "Join the pilot",
     },
     hero: {
-      headline: "Plan a lesson in one sentence. Know exactly who is stuck, and where.",
+      headlinePre: "Plan a lesson in ",
+      headlineEmphasis: "one sentence",
+      headlinePost: ". Know who's stuck, and where.",
       subheadline:
-        "Teacher Copilot builds your lesson from your own question bank, lets students practise beside a study buddy that never hands over the answer — and reports every gap back to you, student by student, after every session.",
+        "Copilot builds the lesson from your own question bank. Students practise with a buddy that never gives answers — then every gap comes back to you.",
       pilot: enPilot,
       snapshot: {
         title: "Session report",
@@ -143,7 +148,7 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
     },
     pain: {
       eyebrow: "The problem",
-      title: "You find out who is falling behind… after you've finished marking the test.",
+      title: "You only find out after you've marked.",
       points: [
         {
           title: "Planning eats your evenings.",
@@ -161,7 +166,7 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
     },
     how: {
       eyebrow: "How it works",
-      title: "A closed loop: you assign, they practise, the system reports back.",
+      title: "You assign. They practise. It reports back.",
       steps: [
         {
           label: "Step 1",
@@ -278,12 +283,12 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
         "Huh, I did it that way too and got stuck right about here… what did you do at this step?",
     },
     school: {
-      title: "For school leaders: the whole school, not just one class.",
+      title: "School leaders see the whole school.",
       body: "Learning data rolls up by class and by year group — which concepts a whole cohort is weak on, which teachers could use more support. Register for a school-level pilot and talk to us directly.",
       cta: "Talk to us about a school pilot",
     },
     finalCta: {
-      title: "Next lesson, let the report find who needs you most.",
+      title: "Next lesson, teach where the class is stuck.",
       body: "The pilot is open to a limited number of classes. Free for the whole pilot period — in exchange, we need your honest feedback.",
       pilot: enPilot,
     },
@@ -309,9 +314,11 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
       cta: "Đăng ký pilot",
     },
     hero: {
-      headline: "Soạn bài bằng một câu. Biết chính xác ai đang hổng ở đâu.",
+      headlinePre: "Soạn bài bằng ",
+      headlineEmphasis: "một câu",
+      headlinePost: ". Biết ai đang hổng ở đâu.",
       subheadline:
-        "Teacher Copilot của D-Friend soạn giáo án từ chính ngân hàng bài tập của bạn, để học sinh luyện cùng một người bạn học không bao giờ lộ đáp án — và báo cáo lại cho bạn từng lỗ hổng kiến thức, theo từng em, sau mỗi buổi.",
+        "Copilot soạn giáo án từ chính ngân hàng bài tập của bạn. Học sinh luyện cùng người bạn học không lộ đáp án, rồi từng lỗ hổng được báo về cho bạn.",
       pilot: viPilot,
       snapshot: {
         title: "Báo cáo buổi học",
@@ -327,7 +334,7 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
     },
     pain: {
       eyebrow: "Vấn đề",
-      title: "Bạn chỉ biết học sinh hổng kiến thức… khi đã chấm xong bài kiểm tra.",
+      title: "Chấm xong bài mới biết ai hổng.",
       points: [
         {
           title: "Soạn bài ngốn buổi tối.",
@@ -345,7 +352,7 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
     },
     how: {
       eyebrow: "Cách hoạt động",
-      title: "Một vòng lặp khép kín: bạn giao — trò luyện — hệ thống báo về.",
+      title: "Bạn giao. Trò luyện. Hệ thống báo về.",
       steps: [
         {
           label: "Bước 1",
@@ -451,7 +458,7 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
     },
     difference: {
       eyebrow: "Vì sao khác biệt",
-      title: "Đúng đáp án nhưng sai phương pháp — chúng tôi bắt được ca đó.",
+      title: "Đúng đáp án, sai phương pháp — vẫn bắt được.",
       body: "Phần lớn công cụ chấm một chiều: đáp án đúng thì khen. Nhưng học sinh giải đúng bằng phương pháp sai sẽ mang phương pháp đó vào phòng thi — và trượt ở bài khó hơn.",
       mechanism:
         "D-Friend chấm cách làm và kết quả độc lập nhau. Đúng kết quả, sai đường đi? Hệ thống ghi nhận, bạn thấy trong báo cáo, và người bạn học nhẹ nhàng khiến học sinh tự nhìn lại cách giải của mình.",
@@ -461,12 +468,12 @@ export const teacherCopy: Record<Locale, TeacherCopy> = {
       dfriendLine: "Ơ mình cũng làm cách đó mà bị kẹt đúng chỗ này… bạn làm gì ở bước này thế?",
     },
     school: {
-      title: "Với ban giám hiệu: nhìn được cả trường, không chỉ từng lớp.",
+      title: "Ban giám hiệu nhìn được cả trường.",
       body: "Dữ liệu học tập tổng hợp theo lớp, theo khối — khái niệm nào cả khối đang yếu, giáo viên nào cần thêm hỗ trợ. Đăng ký pilot cấp trường để trao đổi trực tiếp với chúng tôi.",
       cta: "Liên hệ về pilot cấp trường",
     },
     finalCta: {
-      title: "Buổi dạy tới, hãy để báo cáo tự tìm ra ai cần bạn nhất.",
+      title: "Buổi sau, dạy đúng chỗ lớp đang hổng.",
       body: "Pilot đang mở cho số lượng lớp giới hạn. Miễn phí trong suốt giai đoạn pilot — đổi lại, chúng tôi cần phản hồi thẳng thắn của bạn.",
       pilot: viPilot,
     },
