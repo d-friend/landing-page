@@ -10,6 +10,9 @@ import TeacherCopilot from "@/components/TeacherCopilot";
 import Differentiation from "@/components/Differentiation";
 import Footer from "@/components/Footer";
 
+const APP_LOGIN = "https://app.dfriend.online/login";
+const APP_REGISTER = "https://app.dfriend.online/register";
+
 export default function LandingPage({
   copy,
   locale,
@@ -19,7 +22,11 @@ export default function LandingPage({
 }) {
   return (
     <>
-      <TopBar content={copy.navigation} actions={copy.hero.actions} />
+      <TopBar
+        sections={copy.navigation.sections}
+        primary={{ label: copy.hero.actions.register, href: APP_REGISTER }}
+        secondary={{ label: copy.hero.actions.login, href: APP_LOGIN }}
+      />
       <main>
         <Hero content={copy.hero} locale={locale} />
         <Philosophy content={copy.philosophy} sectionId="landing-philosophy" />

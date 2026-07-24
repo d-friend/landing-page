@@ -1,31 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import type { LandingCopy } from "@/content/landing";
 import LogoMark from "@/components/LogoMark";
 
-const APP_LOGIN = "https://app.dfriend.online/login";
-const APP_REGISTER = "https://app.dfriend.online/register";
+type NavLink = { label: string; href: string };
 
 export default function TopBar({
-  content,
-  actions,
+  sections,
+  primary,
+  secondary,
+  homeHref = "#",
 }: {
-  content: LandingCopy["navigation"];
-  actions: LandingCopy["hero"]["actions"];
+  sections: NavLink[];
+  primary: NavLink;
+  secondary?: NavLink;
+  homeHref?: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
-        <a href="#" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink">
+        <a
+          href={homeHref}
+          className="flex shrink-0 items-center gap-2 whitespace-nowrap font-display text-lg font-semibold tracking-tight text-ink"
+        >
           <LogoMark className="h-9" />
           D-Friend
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">
-          {content.sections.map((section) => (
+          {sections.map((section) => (
             <a
               key={section.href}
               href={section.href}
@@ -37,17 +42,19 @@ export default function TopBar({
         </nav>
 
         <div className="flex items-center gap-2">
+          {secondary && (
+            <a
+              href={secondary.href}
+              className="hidden rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-brand-soft sm:block"
+            >
+              {secondary.label}
+            </a>
+          )}
           <a
-            href={APP_LOGIN}
-            className="hidden rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-brand-soft sm:block"
+            href={primary.href}
+            className="whitespace-nowrap rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition-transform hover:bg-brand-deep active:scale-[0.98]"
           >
-            {actions.login}
-          </a>
-          <a
-            href={APP_REGISTER}
-            className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition-transform hover:bg-brand-deep active:scale-[0.98]"
-          >
-            {actions.register}
+            {primary.label}
           </a>
           <button
             type="button"
@@ -64,7 +71,7 @@ export default function TopBar({
 
       {menuOpen && (
         <nav className="border-t border-line bg-bg px-5 py-3 md:hidden" aria-label="Sections">
-          {content.sections.map((section) => (
+          {sections.map((section) => (
             <a
               key={section.href}
               href={section.href}

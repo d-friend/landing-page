@@ -68,6 +68,8 @@ export async function POST(request: Request) {
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const locale = body.locale === "vi" ? "vi" : "en";
+  // Which landing page the signup came from, so the inbox reads at a glance.
+  const audience = body.audience === "teacher" ? "teacher" : "student";
 
   if (!email) {
     return NextResponse.json({ error: "missing_contact" }, { status: 400 });
@@ -90,6 +92,7 @@ export async function POST(request: Request) {
     console.error("[pilot] RESEND_API_KEY is not set; cannot deliver signup", {
       email,
       locale,
+      audience,
     });
     return NextResponse.json({ error: "email_not_configured" }, { status: 500 });
   }
@@ -99,6 +102,7 @@ export async function POST(request: Request) {
   const submittedAt = new Date().toISOString();
   const rows = [
     ["Email", email],
+    ["From", audience === "teacher" ? "Teacher page" : "Student page"],
     ["Language", locale],
     ["Submitted", submittedAt],
   ];
@@ -114,7 +118,7 @@ export async function POST(request: Request) {
         from: FROM_EMAIL,
         to: [CONTACT_EMAIL],
         reply_to: email || undefined,
-        subject: `New pilot signup — ${subjectHint}`,
+        subject: `New ${audience} pilot signup — ${subjectHint}`,
         text: rows.map(([label, value]) => `${label}: ${value}`).join("\n"),
         html: `<h2>New pilot signup</h2><ul>${rows
           .map(([label, value]) => `<li><strong>${label}:</strong> ${escapeHtml(value)}</li>`)
