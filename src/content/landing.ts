@@ -1,5 +1,18 @@
 export type LandingLocale = "en" | "vi";
 
+/** Shared by the student hero and both teacher-page signup blocks. */
+export type PilotFormCopy = {
+  cta: string;
+  submitting: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  hint: string;
+  success: string;
+  errorMissing: string;
+  errorEmail: string;
+  errorGeneric: string;
+};
+
 export type ChatMessage = {
   from: "student" | "buddy";
   text: string;
@@ -26,17 +39,7 @@ export type LandingCopy = {
       login: string;
       register: string;
     };
-    pilot: {
-      cta: string;
-      submitting: string;
-      emailLabel: string;
-      emailPlaceholder: string;
-      hint: string;
-      success: string;
-      errorMissing: string;
-      errorEmail: string;
-      errorGeneric: string;
-    };
+    pilot: PilotFormCopy;
     chat: {
       problemLabel: string;
       problemText: string;
