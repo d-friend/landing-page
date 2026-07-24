@@ -33,7 +33,9 @@ export default function TeacherHero({
           {...enter(0.06)}
           className="headline max-w-[18ch] pb-1 text-4xl font-semibold leading-[1.1] text-ink md:text-5xl"
         >
-          {content.headline}
+          {content.headlinePre}
+          <em className="italic text-brand">{content.headlineEmphasis}</em>
+          {content.headlinePost}
         </motion.h1>
 
         <motion.p
