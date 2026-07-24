@@ -1,4 +1,4 @@
-import type { LandingLocale, PilotFormCopy } from "@/content/landing";
+import type { Locale, PilotFormCopy } from "@/content/shared";
 
 export type TeacherCopy = {
   metadata: {
@@ -107,7 +107,7 @@ const viPilot: PilotFormCopy = {
   errorGeneric: "Đã có lỗi xảy ra. Vui lòng thử lại, hoặc gửi mail tới hello@dfriend.online.",
 };
 
-export const teacherCopy: Record<LandingLocale, TeacherCopy> = {
+export const teacherCopy: Record<Locale, TeacherCopy> = {
   en: {
     metadata: {
       title: "D-Friend Teacher Copilot. Plan a lesson in one sentence.",
