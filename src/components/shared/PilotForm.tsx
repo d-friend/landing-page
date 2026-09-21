@@ -46,6 +46,13 @@ export default function PilotForm({
     setStatus("sending");
     setMessage("");
 
+    if (audience === "student") {
+      const registerUrl = new URL("https://app.dfriend.online/register");
+      registerUrl.searchParams.set("email", trimmedEmail);
+      window.location.assign(registerUrl.toString());
+      return;
+    }
+
     try {
       const response = await fetch("/api/pilot", {
         method: "POST",
