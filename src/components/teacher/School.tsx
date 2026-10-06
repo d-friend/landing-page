@@ -1,5 +1,7 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
 import type { TeacherCopy } from "@/content/teacher";
-import Reveal from "@/components/shared/Reveal";
 
 const CONTACT_EMAIL = "hello@dfriend.online";
 
@@ -12,7 +14,7 @@ export default function TeacherSchool({
 }) {
   return (
     <section id={sectionId} className="mx-auto max-w-6xl px-5 py-16 md:py-20">
-      <Reveal>
+      <CinematicReveal>
         <div className="rounded-2xl border border-line bg-surface px-6 py-8 md:px-10 md:py-10">
           <div className="grid items-center gap-6 md:grid-cols-[3fr_2fr] md:gap-10">
             <div>
@@ -33,7 +35,7 @@ export default function TeacherSchool({
             </div>
           </div>
         </div>
-      </Reveal>
+      </CinematicReveal>
     </section>
   );
 }

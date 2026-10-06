@@ -1,5 +1,7 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
 import type { TeacherCopy } from "@/content/teacher";
-import Reveal from "@/components/shared/Reveal";
 
 export default function TeacherDifference({
   content,
@@ -12,7 +14,7 @@ export default function TeacherDifference({
     <section id={sectionId} className="border-t border-line bg-surface">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
         <div className="grid gap-10 lg:grid-cols-[6fr_5fr] lg:gap-14">
-          <Reveal>
+          <CinematicReveal>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
               {content.eyebrow}
             </p>
@@ -23,16 +25,16 @@ export default function TeacherDifference({
             <p className="mt-4 max-w-[54ch] text-lg leading-relaxed text-muted">
               {content.mechanism}
             </p>
-          </Reveal>
+          </CinematicReveal>
 
-          <Reveal delay={0.12}>
+          <CinematicReveal direction="right" delay={0.12}>
             <div className="space-y-4">
               <div className="rounded-2xl border border-line bg-bg p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                   {content.tutorLabel}
                 </p>
                 <p className="mt-2 text-base leading-relaxed text-muted line-through decoration-line">
-                  “{content.tutorLine}”
+                  "{content.tutorLine}"
                 </p>
               </div>
 
@@ -40,10 +42,10 @@ export default function TeacherDifference({
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">
                   {content.dfriendLabel}
                 </p>
-                <p className="mt-2 text-base leading-relaxed text-ink">“{content.dfriendLine}”</p>
+                <p className="mt-2 text-base leading-relaxed text-ink">"{content.dfriendLine}"</p>
               </div>
             </div>
-          </Reveal>
+          </CinematicReveal>
         </div>
       </div>
     </section>

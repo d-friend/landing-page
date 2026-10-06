@@ -1,5 +1,8 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
+import { useCinematicContext } from "@/components/shared/CinematicRevealProvider";
 import type { TeacherCopy } from "@/content/teacher";
-import Reveal from "@/components/shared/Reveal";
 
 export default function TeacherReport({
   content,
@@ -8,23 +11,24 @@ export default function TeacherReport({
   content: TeacherCopy["report"];
   sectionId: string;
 }) {
+  const { staggerDelay } = useCinematicContext();
   const mock = content.mock;
 
   return (
     <section id={sectionId} className="border-t border-line bg-surface">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
-        <Reveal>
+        <CinematicReveal>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
             {content.eyebrow}
           </p>
           <h2 className="headline mt-3 max-w-2xl text-3xl font-semibold text-ink md:text-4xl">
             {content.title}
           </h2>
-        </Reveal>
+        </CinematicReveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[6fr_5fr] lg:gap-14">
           {/* The report mock-up, standing in for the real post-session view. */}
-          <Reveal>
+          <CinematicReveal blurIntensity={8}>
             <div className="overflow-hidden rounded-2xl border border-line bg-bg">
               <div className="flex items-baseline justify-between gap-3 border-b border-line px-6 py-5">
                 <span className="font-display text-base font-semibold text-ink">{mock.title}</span>
@@ -105,25 +109,25 @@ export default function TeacherReport({
                 </span>
               </div>
             </div>
-          </Reveal>
+          </CinematicReveal>
 
           <div>
             <ul className="space-y-7">
               {content.points.map((point, index) => (
-                <Reveal key={point.title} delay={0.06 + index * 0.05}>
+                <CinematicReveal key={point.title} delay={index * (staggerDelay / 1000)}>
                   <li>
                     <h3 className="font-display text-base font-semibold text-ink">{point.title}</h3>
                     <p className="mt-2 text-base leading-relaxed text-muted">{point.body}</p>
                   </li>
-                </Reveal>
+                </CinematicReveal>
               ))}
             </ul>
 
-            <Reveal delay={0.34}>
+            <CinematicReveal delay={0.34}>
               <p className="mt-9 border-t border-line pt-6 text-base leading-relaxed text-ink">
                 {content.closing}
               </p>
-            </Reveal>
+            </CinematicReveal>
           </div>
         </div>
       </div>
