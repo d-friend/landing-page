@@ -1,6 +1,7 @@
 import type { Locale } from "@/content/shared";
 import type { TeacherCopy } from "@/content/teacher";
 import { audiencePath } from "@/content/audience";
+import { CinematicRevealProvider } from "@/components/shared/CinematicRevealProvider";
 import TopBar from "@/components/shared/TopBar";
 import TeacherHero from "@/components/teacher/Hero";
 import TeacherPain from "@/components/teacher/Pain";
@@ -19,7 +20,7 @@ export default function TeacherLandingPage({
   locale: Locale;
 }) {
   return (
-    <>
+    <CinematicRevealProvider>
       <TopBar
         sections={copy.navigation.sections}
         primary={{ label: copy.navigation.cta, href: "#teacher-footer" }}
@@ -40,6 +41,6 @@ export default function TeacherLandingPage({
         locale={locale}
         sectionId="teacher-footer"
       />
-    </>
+    </CinematicRevealProvider>
   );
 }

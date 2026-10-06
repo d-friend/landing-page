@@ -1,5 +1,6 @@
 import type { Locale } from "@/content/shared";
 import type { StudentCopy } from "@/content/student";
+import { CinematicRevealProvider } from "@/components/shared/CinematicRevealProvider";
 import TopBar from "@/components/shared/TopBar";
 import Hero from "@/components/student/Hero";
 import Philosophy from "@/components/student/Philosophy";
@@ -22,7 +23,7 @@ export default function LandingPage({
   locale: Locale;
 }) {
   return (
-    <>
+    <CinematicRevealProvider>
       <TopBar
         sections={copy.navigation.sections}
         primary={{ label: copy.hero.actions.register, href: APP_REGISTER }}
@@ -44,6 +45,6 @@ export default function LandingPage({
         locale={locale}
         sectionId="landing-footer"
       />
-    </>
+    </CinematicRevealProvider>
   );
 }
