@@ -1,5 +1,8 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
+import { useCinematicContext } from "@/components/shared/CinematicRevealProvider";
 import type { StudentCopy } from "@/content/student";
-import Reveal from "@/components/shared/Reveal";
 
 export default function Differentiation({
   content,
@@ -8,20 +11,22 @@ export default function Differentiation({
   content: StudentCopy["differentiation"];
   sectionId: string;
 }) {
+  const { staggerDelay } = useCinematicContext();
+
   return (
     <section id={sectionId} className="border-t border-line bg-surface">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-28">
-        <Reveal>
+        <CinematicReveal>
           <h2 className="headline max-w-2xl text-3xl font-semibold text-ink md:text-4xl">
             {content.title}
           </h2>
           <p className="mt-4 max-w-[58ch] text-lg leading-relaxed text-muted">
             {content.description}
           </p>
-        </Reveal>
+        </CinematicReveal>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-line">
-          <Reveal delay={0.08} className="md:pr-10">
+          <CinematicReveal direction="left" delay={0.08} className="md:pr-10">
             <h3 className="font-display text-lg font-semibold text-muted">
               {content.genericLabel}
             </h3>
@@ -33,9 +38,9 @@ export default function Differentiation({
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </CinematicReveal>
 
-          <Reveal delay={0.14} className="md:pl-10">
+          <CinematicReveal direction="right" delay={0.14} className="md:pl-10">
             <h3 className="font-display text-lg font-semibold text-brand-deep">
               {content.dfriendLabel}
             </h3>
@@ -47,7 +52,7 @@ export default function Differentiation({
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </CinematicReveal>
         </div>
       </div>
     </section>
