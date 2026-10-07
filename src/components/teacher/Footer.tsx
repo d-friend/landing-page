@@ -1,6 +1,8 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
 import type { Locale } from "@/content/shared";
 import type { TeacherCopy } from "@/content/teacher";
-import Reveal from "@/components/shared/Reveal";
 import PilotForm from "@/components/shared/PilotForm";
 import FooterBar from "@/components/shared/FooterBar";
 
@@ -18,7 +20,7 @@ export default function TeacherFooter({
   return (
     <footer id={sectionId} className="scroll-mt-20 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-20 text-center md:py-28">
-        <Reveal>
+        <CinematicReveal>
           <h2 className="headline mx-auto max-w-2xl text-3xl font-semibold text-ink md:text-5xl">
             {content.title}
           </h2>
@@ -31,7 +33,7 @@ export default function TeacherFooter({
             audience="teacher"
             className="mx-auto mt-9 max-w-lg text-left"
           />
-        </Reveal>
+        </CinematicReveal>
       </div>
 
       <FooterBar

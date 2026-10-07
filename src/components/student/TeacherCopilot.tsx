@@ -1,5 +1,8 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
+import { useCinematicContext } from "@/components/shared/CinematicRevealProvider";
 import type { StudentCopy } from "@/content/student";
-import Reveal from "@/components/shared/Reveal";
 
 export default function TeacherCopilot({
   content,
@@ -8,11 +11,13 @@ export default function TeacherCopilot({
   content: StudentCopy["teacher"];
   sectionId: string;
 }) {
+  const { staggerDelay } = useCinematicContext();
+
   return (
     <section id={sectionId} className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="grid items-center gap-12 lg:grid-cols-[6fr_5fr] lg:gap-16">
         <div>
-          <Reveal>
+          <CinematicReveal>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-deep">
               {content.eyebrow}
             </p>
@@ -22,22 +27,22 @@ export default function TeacherCopilot({
             <p className="mt-4 max-w-[54ch] text-lg leading-relaxed text-muted">
               {content.description}
             </p>
-          </Reveal>
+          </CinematicReveal>
 
           <ul className="mt-10 space-y-7">
             {content.points.map((point, index) => (
-              <Reveal key={point.title} delay={0.08 + index * 0.06}>
+              <CinematicReveal key={point.title} delay={0.08 + index * (staggerDelay / 1000)}>
                 <li className="border-l-2 border-brand pl-5">
                   <h3 className="font-display text-lg font-semibold text-ink">{point.title}</h3>
                   <p className="mt-1.5 max-w-[52ch] leading-relaxed text-muted">{point.body}</p>
                 </li>
-              </Reveal>
+              </CinematicReveal>
             ))}
           </ul>
         </div>
 
         {/* Miniature of the real Copilot class report */}
-        <Reveal delay={0.12} className="justify-self-center lg:justify-self-end">
+        <CinematicReveal delay={0.12} className="justify-self-center lg:justify-self-end">
           <div className="w-full max-w-md rounded-2xl border border-line bg-surface p-6 shadow-[0_20px_50px_-24px_rgba(120,60,30,0.25)] md:p-7">
             <p className="font-display text-lg font-semibold text-ink">{content.report.title}</p>
 
@@ -77,7 +82,7 @@ export default function TeacherCopilot({
               </span>
             </div>
           </div>
-        </Reveal>
+        </CinematicReveal>
       </div>
     </section>
   );

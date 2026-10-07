@@ -1,6 +1,8 @@
+"use client";
+
+import CinematicReveal from "@/components/shared/CinematicReveal";
 import type { Locale } from "@/content/shared";
 import type { StudentCopy } from "@/content/student";
-import Reveal from "@/components/shared/Reveal";
 import FooterBar from "@/components/shared/FooterBar";
 
 const APP_REGISTER = "https://app.dfriend.online/register";
@@ -19,7 +21,7 @@ export default function Footer({
   return (
     <footer id={sectionId} className="border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-20 text-center md:py-28">
-        <Reveal>
+        <CinematicReveal>
           <h2 className="headline mx-auto max-w-xl text-3xl font-semibold text-ink md:text-5xl">
             {content.title}
           </h2>
@@ -32,7 +34,7 @@ export default function Footer({
           >
             {registerLabel}
           </a>
-        </Reveal>
+        </CinematicReveal>
       </div>
 
       <FooterBar
