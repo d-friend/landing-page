@@ -140,10 +140,6 @@ a{color:#15171C}a:hover{color:#3B4BFF}
 .spin2{transform-box:view-box;transform-origin:150px 150px;animation:spin 9s linear infinite}
 .spin3{transform-box:view-box;transform-origin:150px 150px;animation:spin 15s linear infinite}
 @keyframes spin{to{transform:rotate(-360deg)}}
-.wave{animation:wave 3.2s ease-in-out infinite alternate}
-@keyframes wave{0%{d:path('M 20 150 Q 110 -100 200 150')}50%{d:path('M 20 40 Q 110 230 200 40')}100%{d:path('M 20 130 Q 110 30 200 130')}}
-.tri{animation:tri 4s cubic-bezier(.6,0,.3,1) infinite alternate}
-@keyframes tri{0%{d:path('M 20 140 L 180 140 L 60 20 Z')}50%{d:path('M 20 140 L 180 140 L 100 30 Z')}100%{d:path('M 20 140 L 180 140 L 170 30 Z')}}
 .mol{transform-box:view-box;transform-origin:100px 95px;animation:spin 12s linear infinite reverse}
 .atom{transform-box:fill-box;transform-origin:50% 50%;animation:atom 1.8s ease-in-out infinite alternate}
 @keyframes atom{to{transform:scale(1.12)}}

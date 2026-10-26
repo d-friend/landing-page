@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { MorphPath } from "@/components/MorphPath";
 
 const tag = (color?: string): CSSProperties => ({ fontSize: 14, fontWeight: 600, ...(color ? { color } : {}) });
 const h3: CSSProperties = { margin: "6px 0 0", fontSize: 26, fontWeight: 800 };
@@ -62,7 +63,7 @@ export function Subjects() {
           <svg viewBox="0 0 220 170" style={{ width: "70%", height: "auto", alignSelf: "center" }} aria-hidden="true">
             <line x1="0" y1="110" x2="220" y2="110" stroke="#15171C" strokeWidth="1.5" />
             <line x1="110" y1="0" x2="110" y2="170" stroke="#15171C" strokeWidth="1.5" />
-            <path className="wave" d="M 20 150 Q 110 -100 200 150" fill="none" stroke="#3B4BFF" strokeWidth="4" strokeLinecap="round" />
+            <MorphPath keyframes={["M 20 150 Q 110 -100 200 150", "M 20 40 Q 110 230 200 40", "M 20 130 Q 110 30 200 130"]} legSeconds={3.2} spline=".42 0 .58 1" fill="none" stroke="#3B4BFF" strokeWidth="4" strokeLinecap="round" />
           </svg>
           <p style={tryIt}>Thử hỏi: “Đổi dấu a thì parabol quay về phía nào?”</p>
         </Tile>
@@ -90,7 +91,7 @@ export function Subjects() {
             <h3 className="disp" style={h3}>Hình học</h3>
           </div>
           <svg viewBox="0 0 200 160" style={{ width: "62%", height: "auto", alignSelf: "center" }} aria-hidden="true">
-            <path className="tri" d="M 20 140 L 180 140 L 60 20 Z" fill="#EAE4D3" stroke="#15171C" strokeWidth="3" strokeLinejoin="round" />
+            <MorphPath keyframes={["M 20 140 L 180 140 L 60 20 Z", "M 20 140 L 180 140 L 100 30 Z", "M 20 140 L 180 140 L 170 30 Z"]} legSeconds={4} spline=".6 0 .3 1" fill="#EAE4D3" stroke="#15171C" strokeWidth="3" strokeLinejoin="round" />
           </svg>
           <p style={{ ...tryIt, color: "#4A4F5C" }}>Thử hỏi: “Kéo một đỉnh đi, tổng ba góc có đổi không?”</p>
         </Tile>
