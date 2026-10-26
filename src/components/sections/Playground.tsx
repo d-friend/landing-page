@@ -56,8 +56,6 @@ export function Playground() {
   });
 
   const need = needHeight(cfg);
-  const needY = Math.max(10, g.y0 - need * g.k);
-  const enough = cfg.H >= need;
   const hNow = Math.max(0, (g.y0 - view.y) / g.k);
   const done = view.mode === "done";
 
@@ -121,11 +119,6 @@ export function Playground() {
                   </g>
                 );
               })}
-              {/* Gap between where the car is released and the line it has to reach. */}
-              <line x1={g.x0 + 44} y1={g.sy} x2={g.x0 + 44} y2={needY} stroke={enough ? "#15171C" : "#FF3366"} strokeWidth="2.5" strokeLinecap="round" />
-              <line x1={g.x0 + 38} y1={g.sy} x2={g.x0 + 50} y2={g.sy} stroke={enough ? "#15171C" : "#FF3366"} strokeWidth="2.5" strokeLinecap="round" />
-              <line x1={g.x0 + 38} y1={needY} x2={g.x0 + 50} y2={needY} stroke={enough ? "#15171C" : "#FF3366"} strokeWidth="2.5" strokeLinecap="round" />
-              <text x={g.x0 + 56} y={(g.sy + needY) / 2 + 4} style={{ ...mono, fill: "#15171C" }}>{enough ? `dư ${fmt(cfg.H - need)} m` : `thiếu ${fmt(need - cfg.H)} m`}</text>
               <path className="sim-track" d={g.d} style={{ d: `path('${g.d}')` } as CSSProperties} fill="none" stroke="#15171C" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
               <polygon points={flag} fill="#C8F904" stroke="#15171C" strokeWidth="1.5" />
               <line x1={g.x0} y1={g.sy} x2={g.x0} y2={g.sy - 26} stroke="#15171C" strokeWidth="2" />
