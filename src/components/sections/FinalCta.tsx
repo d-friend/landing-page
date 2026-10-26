@@ -10,7 +10,7 @@ export function FinalCta() {
             Đừng chỉ <span className="strike">ghi nhớ.</span>
           </span>
           <span style={{ display: "block" }}>
-            <span className="hl2">Khám phá.</span>
+            Hãy <span className="hl2">khám phá.</span>
           </span>
         </h2>
         <FinalAsk />

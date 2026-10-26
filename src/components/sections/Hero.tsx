@@ -69,7 +69,7 @@ export function Hero() {
           <a href="#thu" className="hide-sm" style={navLink}>Chơi thử</a>
           <a href="#mon" className="hide-sm" style={navLink}>Môn học</a>
           <a href="#giao-vien" className="hide-sm" style={navLink}>Giáo viên</a>
-          <a href={appUrl()} className="btn" style={{ minHeight: 44 }}>Vào học</a>
+          <a href={appUrl()} className="btn btn-nav" style={{ minHeight: 44 }}>Vào học</a>
         </div>
       </nav>
 

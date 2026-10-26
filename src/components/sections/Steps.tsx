@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Patch } from "@/components/Patch";
-import { prefersReducedMotion } from "@/hooks/useFrameLoop";
+import { prefersReducedMotion, useFrameLoop } from "@/hooks/useFrameLoop";
 
 const STEPS = [
   { title: "Giải bài", desc: "Bạn tự làm từng bước. Sai ở đâu, Patch gợi ý đúng chỗ đó." },
@@ -42,28 +42,60 @@ function Solve() {
   );
 }
 
+// Velocity arrow with a head, drawn in screen space from (x, y) by (dx, dy).
+function Arrow({ x, y, dx, dy, color, label }: { x: number; y: number; dx: number; dy: number; color: string; label: string }) {
+  const len = Math.hypot(dx, dy);
+  if (len < 5) return null;
+  const ux = dx / len, uy = dy / len, hx = x + dx, hy = y + dy;
+  const head = `${hx},${hy} ${hx - ux * 10 - uy * 5},${hy - uy * 10 + ux * 5} ${hx - ux * 10 + uy * 5},${hy - uy * 10 - ux * 5}`;
+  return (
+    <g>
+      <line x1={x} y1={y} x2={hx - ux * 6} y2={hy - uy * 6} stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+      <polygon points={head} fill={color} />
+      <text x={hx + (dx >= 0 ? 6 : -6)} y={hy + (dy >= 0 ? 14 : -6)} textAnchor={dx >= 0 ? "start" : "end"} style={{ font: "700 13px var(--font-mono), monospace", fill: color }}>{label}</text>
+    </g>
+  );
+}
+
+const MarkArrow = ({ dx, dy, color }: { dx: number; dy: number; color: string }) => (
+  <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" style={{ flex: "none" }}>
+    <Arrow x={14 - dx / 2} y={14 - dy / 2} dx={dx} dy={dy} color={color} label="" />
+  </svg>
+);
+
+const PERIOD = 3.2; // seconds per throw
+const K = 0.13; // screen px per unit of velocity
+
 function Understand() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [t, setT] = useState(0.3); // 0.3 = a still frame for reduced motion
+  useFrameLoop(ref, (dt) => setT((v) => 0.04 + ((v - 0.04 + dt / PERIOD * 0.92) % 0.92)));
+  // Same quadratic as THROW: x moves at a constant rate, y accelerates, so vy = -460(1-2t) shrinks to 0 at the top.
+  const x = 30 + 360 * t, y = 220 - 460 * t * (1 - t);
+  const vx = 360 * K, vy = -460 * (1 - 2 * t) * K;
   const items = [
-    { mark: { width: 14, height: 4, background: "#3B4BFF" }, text: "Phương ngang: bay đều, không đổi tốc độ" },
-    { mark: { width: 4, height: 14, background: "#15171C" }, text: "Phương đứng: lên chậm dần, rơi nhanh dần" },
-    { mark: { width: 12, height: 12, borderRadius: "50%", background: "#FF3366", border: "2px solid #15171C" }, text: "Ghép hai chuyển động lại thành parabol" },
+    { mark: <MarkArrow dx={22} dy={0} color="#3B4BFF" />, text: "Phương ngang: bay đều, không đổi tốc độ" },
+    { mark: <MarkArrow dx={0} dy={-22} color="#15171C" />, text: "Phương đứng: lên chậm dần, rơi nhanh dần" },
+    { mark: <MarkArrow dx={16} dy={-16} color="#FF3366" />, text: "Ghép hai chuyển động lại thành parabol" },
   ];
   return (
-    <div className="stage-in" style={{ padding: 28, display: "flex", flexWrap: "wrap", gap: 24, height: "100%", background: "#FFFDF7", alignItems: "center" }}>
+    <div ref={ref} className="stage-in" style={{ padding: 28, display: "flex", flexWrap: "wrap", gap: 24, height: "100%", background: "#FFFDF7", alignItems: "center" }}>
       <div style={{ flex: "2 1 320px", minWidth: 0 }}>
-        <svg viewBox="0 0 420 240" style={{ width: "100%", height: "auto" }} role="img" aria-label="Quả bóng bay theo đường parabol, vận tốc tách thành hai thành phần">
+        <svg viewBox="0 0 420 265" style={{ width: "100%", height: "auto" }} role="img" aria-label="Quả bóng bay theo đường parabol, vận tốc tách thành hai thành phần: ngang không đổi, đứng đổi dần">
           <line x1="0" y1="220" x2="420" y2="220" stroke="#DDE1E8" strokeWidth="2" />
-          <path d={THROW} fill="none" stroke="#15171C" strokeWidth="2.5" strokeDasharray="6 6" />
-          <g className="ball2" style={{ offsetPath: `path('${THROW}')` }}>
-            <line x1="0" y1="0" x2="42" y2="0" stroke="#3B4BFF" strokeWidth="3" />
-            <circle cx="0" cy="0" r="11" fill="#FF3366" stroke="#15171C" strokeWidth="2.5" />
-          </g>
+          <path d={THROW} fill="none" stroke="#15171C" strokeWidth="2.5" strokeDasharray="6 6" opacity=".35" />
+          <line x1={x + vx} y1={y} x2={x + vx} y2={y + vy} stroke="#5A6070" strokeWidth="1.5" strokeDasharray="3 3" />
+          <line x1={x} y1={y + vy} x2={x + vx} y2={y + vy} stroke="#5A6070" strokeWidth="1.5" strokeDasharray="3 3" />
+          <Arrow x={x} y={y} dx={vx} dy={0} color="#3B4BFF" label="vx" />
+          <Arrow x={x} y={y} dx={0} dy={vy} color="#15171C" label="vy" />
+          <Arrow x={x} y={y} dx={vx} dy={vy} color="#FF3366" label="v" />
+          <circle cx={x} cy={y} r="9" fill="#FF3366" stroke="#15171C" strokeWidth="2.5" />
         </svg>
       </div>
       <ul style={{ flex: "1 1 200px", margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
         {items.map((i) => (
           <li key={i.text} className="stg" style={{ display: "flex", gap: 10, alignItems: "center", fontSize: 16 }}>
-            <span style={{ ...i.mark, flex: "none" }} />
+            {i.mark}
             {i.text}
           </li>
         ))}

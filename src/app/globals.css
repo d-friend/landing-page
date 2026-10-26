@@ -10,6 +10,9 @@ a{color:#15171C}a:hover{color:#3B4BFF}
 .btn:active{transform:translateY(4px);box-shadow:0 0 0 #15171C}
 .btn:focus-visible,.chip:focus-visible,.tab:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #3B4BFF;outline-offset:3px}
 .btn-ghost{background:#FFFDF7}
+.btn-nav{box-shadow:0 4px 0 #8FB300}
+.btn-nav:hover{box-shadow:0 2px 0 #8FB300;background:#D6FF3A}
+.btn-nav:active{transform:translateY(4px) scale(.97);box-shadow:0 0 0 #8FB300;background:#B5E000}
 .card{background:#FFFDF7;border:2px solid #15171C;border-radius:20px;box-shadow:0 5px 0 #15171C}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 
