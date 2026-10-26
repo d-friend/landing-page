@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>D-Friend · Logo & Favicon Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700;800&display=swap">
+<style>
+  :root {
+    --ink: #15171C;
+    --paper: #FFFDF7;
+    --bg: #F3F5F7;
+    --border: #DDE1E8;
+    --muted: #4A4F5C;
+    --blue: #3B4BFF;
+    --lime: #C8F904;
+    --pink: #FF3366;
+    --fold: #EAE4D3;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    padding: 48px 56px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .board {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 24px;
+  }
+  .eyebrow {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .title {
+    margin: 6px 0 0 0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 1.05;
+  }
+  .subtitle {
+    margin: 0;
+    max-width: 480px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* CONCEPT SECTION */
+  .concept-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .concept-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .concept-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .badge {
+    background: var(--blue);
+    color: #FFFFFF;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .badge-lime {
+    background: var(--lime);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .concept-name {
+    margin: 0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  .concept-vibe {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* GRID CARDS FOR EACH CONCEPT */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1.35fr 0.9fr 1.4fr;
+    gap: 14px;
+  }
+  .card {
+    background: #FFFFFF;
+    border: 1.5px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: 0 3px 0 var(--ink);
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 184px;
+    position: relative;
+  }
+  .card.dark {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .card.paper-bg {
+    background: var(--paper);
+  }
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card.dark .card-label {
+    color: #8E95A5;
+  }
+  .card-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 12px 0;
+  }
+  .card-note {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .card.dark .card-note {
+    color: #9CA3B4;
+  }
+
+  /* WORDMARK TYPOGRAPHY */
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .wordmark {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+  }
+  .card.dark .wordmark {
+    color: var(--paper);
+  }
+  .wordmark .hyphen {
+    display: inline-block;
+    width: 10px;
+    height: 5px;
+    background: var(--lime);
+    border: 1.5px solid var(--ink);
+    margin: 0 3px;
+    transform: rotate(-12deg);
+  }
+  .card.dark .wordmark .hyphen {
+    border-color: var(--lime);
+  }
+
+  /* FAVICON SCALE TEST */
+  .fav-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 22px;
+    padding: 10px 0;
+  }
+  .fav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .fav-size-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  /* CONTEXT MOCKUPS: BROWSER TAB & WORKSPACE HEADER */
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .browser-bar {
+    background: #DDE1E8;
+    border: 1.5px solid var(--ink);
+    border-radius: 14px;
+    padding: 10px 12px 0 12px;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    overflow: hidden;
+  }
+  .win-dots {
+    display: flex;
+    gap: 6px;
+    padding: 0 10px 12px 4px;
+  }
+  .win-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+  }
+  .tab {
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 130px;
+  }
+  .tab.inactive {
+    background: #CFD5DF;
+    color: var(--muted);
+    border-color: transparent;
+  }
+  .workspace-nav {
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ws-pill {
+    background: #F3F5F7;
+    border: 1.5px solid var(--ink);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="board">
+
+  <!-- HEADER CHUNG -->
+  <div class="header">
+    <div>
+      <p class="eyebrow">D-Friend Brand Identity · Done &gt; Perfect</p>
+      <h1 class="title">Hệ Thống Logo &amp; Favicon (4 Concepts)</h1>
+    </div>
+    <p class="subtitle">
+      Kết hợp chủ nghĩa tối giản cấu trúc (Anthropic, ElevenLabs) với DNA của nhân vật <strong>PATCH</strong> (tờ nháp gấp góc, băng keo Washi, kẹp giấy). Đảm bảo nhận diện sắc nét từ 16×16px đến toàn trang.
+    </p>
+  </div>
+
+  <!-- =====================================================================
+       CONCEPT 03: PATCH SILHOUETTE (NEO-MINIMAL ZINE COMPANION)
+       ===================================================================== -->
+  <div class="concept-block">
+    <div class="concept-header">
+      <div class="concept-title-group">
+        <span class="badge">CONCEPT 03</span>
+        <h2 class="concept-name">PATCH MARK · Biểu Tượng Hóa Trực Tiếp Nhân Vật PATCH</h2>
+      </div>
+      <span class="concept-vibe">Vibe: Indie Zine thực chiến · Tờ nháp nghiêng + Băng keo Washi + Đôi mắt song song (||)</span>
+    </div>
+
+    <div class="concept-grid">
+      <!-- Light Lockup -->
+      <div class="card">
+        <div class="card-label"><span>03A · Primary Lockup</span><span>Light</span></div>
+        <div class="card-center">
+          <div class="lockup">
+            <svg width="50" height="50" viewBox="0 0 64 64" fill="none">
+              <!-- Tờ bìa xanh lót sau -->
+              <polygon points="16,14 54,17 57,56 13,54" fill="#3B4BFF" stroke="#15171C" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Tờ nháp chính hình chữ D cắt góc -->
+              <polygon points="10,11 43,8 55,20 51,54 8,51" fill="#FFFDF7" stroke="#15171C" stroke-width="3.2" stroke-linejoin="round"/>
+              <!-- Nếp gấp góc -->
+              <polygon points="43,8 41,21 55,20" fill="#EAE4D3" stroke="#15171C" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Băng keo Washi góc trái -->
+              <polygon points="4,18 22,6 26,12 8,24" fill="#C8F904" stroke="#15171C" stroke-width="2.8" stroke-linejoin="round"/>
+              <!-- Đôi mắt kiểu ElevenLabs (||) -->
+              <rect x="22" y="27" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+              <rect x="35" y="27" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+            </svg>
+            <div class="wordmark">D<span class="hyphen"></span>Friend</div>
+          </div>
+        </div>
+        <p class="card-note">Rút gọn từ chính PATCH: bỏ miệng và má hồng để giữ vẻ tối giản, chuyên nghiệp của một thương hiệu EdTech.</p>
+      </div>
+
+      <!-- Dark Lockup -->
+      <div class="card dark">
+        <div class="card-label"><span>03B · Inverse Lockup</span><span>Dark (#15171C)</span></div>
+        <div class="card-center">
+          <div class="lockup">
+            <svg width="50" height="50" viewBox="0 0 64 64" fill="none">
+              <polygon points="16,14 54,17 57,56 13,54" fill="#3B4BFF"/>
+              <polygon points="10,11 43,8 55,20 51,54 8,51" fill="#FFFDF7" stroke="#15171C" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="43,8 41,21 55,20" fill="#EAE4D3" stroke="#15171C" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="4,18 22,6 26,12 8,24" fill="#C8F904" stroke="#15171C" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="22" y="27" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+              <rect x="35" y="27" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+            </svg>
+            <div class="wordmark">D<span class="hyphen"></span>Friend</div>
+          </div>
+        </div>
+        <p class="card-note">Liên kết 100% giữa nhận diện thương hiệu và Pet đồng hành trong Workspace.</p>
+      </div>
+
+      <!-- Monochrome -->
+      <div class="card paper-bg">
+        <div class="card-label"><span>03C · Pure Mono</span><span>Line &amp; Solid</span></div>
+        <div class="card-center">
+          <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+            <polygon points="12,12 44,9 56,21 52,54 10,51" fill="#FFFDF7" stroke="#15171C" stroke-width="4" stroke-linejoin="round"/>
+            <polygon points="44,9 42,22 56,21" fill="#15171C"/>
+            <polygon points="5,19 23,7 27,13 9,25" fill="#15171C"/>
+            <rect x="23" y="28" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+            <rect x="36" y="28" width="5.5" height="12" rx="1.5" fill="#15171C"/>
+          </svg>
+        </div>
+        <p class="card-note">Bản 1 màu dùng mảng đặc cho băng keo và góc giấy gấp để giữ nguyên cá tính.</p>
+      </div>
+
+      <!-- Favicon Scale Test -->
+      <div class="card">
+        <div class="card-label"><span>03D · Favicon Stress-Test</span><span>64 / 32 / 16px</span></div>
+        <div class="fav-row">
+          <div class="fav-item">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <polygon points="15,14 55,17 58,56 12,54" fill="#3B4BFF" stroke="#15171C" stroke-width="3" stroke-linejoin="round"/>
+              <polygon points="9,11 43,8 55,20 51,54 7,51" fill="#FFFDF7" stroke="#15171C" stroke-width="3.2" stroke-linejoin="round"/>
+              <polygon points="43,8 41,21 55,20" fill="#EAE4D3" stroke="#15171C" stroke-width="3" stroke-linejoin="round"/>
+              <polygon points="3,18 22,5 27,12 8,25" fill="#C8F904" stroke="#15171C" stroke-width="2.8" stroke-linejoin="round"/>
+              <rect x="21" y="27" width="6" height="13" rx="1.5" fill="#15171C"/>
+              <rect x="35" y="27" width="6" height="13" rx="1.5" fill="#15171C"/>
+            </svg>
+            <span class="fav-size-tag">64px</span>
+          </div>
+          <div class="fav-item">
+            <svg width="32" height="32" viewBox="0 0 64 64">
+              <polygon points="10,10 44,7 57,20 53,56 8,53" fill="#FFFDF7" stroke="#15171C" stroke-width="4.5" stroke-linejoin="round"/>
+              <polygon points="4,18 25,4 30,12 9,26" fill="#C8F904" stroke="#15171C" stroke-width="3.5" stroke-linejoin="round"/>
+              <rect x="21" y="26" width="7" height="15" rx="2" fill="#15171C"/>
+              <rect x="36" y="26" width="7" height="15" rx="2" fill="#15171C"/>
+            </svg>
+            <span class="fav-size-tag">32px</span>
+          </div>
+          <div class="fav-item">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <polygon points="2,2 11,1 15,5 14,15 1,14" fill="#FFFDF7" stroke="#15171C" stroke-width="1.5" stroke-linejoin="round"/>
+              <polygon points="0.5,4.5 6.5,0.5 8.5,3 2.5,7" fill="#C8F904" stroke="#15171C" stroke-width="1"/>
+              <rect x="5" y="6.5" width="2" height="4.5" fill="#15171C"/>
+              <rect x="9" y="6.5" width="2" height="4.5" fill="#15171C"/>
+            </svg>
+            <span class="fav-size-tag">16px</span>
+          </div>
+        </div>
+        <p class="card-note">Ở bản 16px, lược bỏ lớp giấy xanh lót sau để tập trung vào tờ giấy trắng, băng keo cốm và 2 mắt.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- =====================================================================
+       REAL-WORLD CONTEXT PREVIEW: BROWSER TABS & STUDENT WORKSPACE UI
+       ===================================================================== -->
+  <div class="concept-block">
+    <div class="concept-header">
+      <div class="concept-title-group">
+        <span class="badge" style="background:#15171C">REAL-WORLD TEST</span>
+        <h2 class="concept-name">Kiểm Chứng Thực Tế: Thanh Tab Trình Duyệt (16px) &amp; Header Workspace</h2>
+      </div>
+      <span class="concept-vibe">So sánh trực tiếp khả năng nhận diện của cả 4 Favicon khi đặt cạnh nhau</span>
+    </div>
+
+    <div class="mockup-grid">
+      <!-- Browser Tabs Preview -->
+      <div class="browser-bar">
+        <div class="win-dots">
+          <span style="background:#FF3366"></span>
+          <span style="background:#C8F904"></span>
+          <span style="background:#3B4BFF"></span>
+        </div>
+        <!-- Tab 1: Concept 01 -->
+        <div class="tab">
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <rect width="16" height="16" rx="3.5" fill="#15171C"/>
+            <rect x="3" y="3" width="3.2" height="10" fill="#FFFDF7"/>
+            <path d="M7.5 3L13.5 7V9L7.5 13V10L10.5 8L7.5 6V3Z" fill="#C8F904"/>
+          </svg>
+          <span>D-Friend · Bài tập #1</span>
+        </div>
+        <!-- Tab 2: Concept 02 -->
+        <div class="tab inactive">
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <path d="M2 1H10L15 6V11.5C15 13.4 13.4 15 11.5 15H2V1Z" fill="#3B4BFF"/>
+            <rect x="5.5" y="6" width="4.5" height="5.5" rx="1" fill="#FFFDF7"/>
+            <polygon points="10,1 10,6 15,6" fill="#C8F904"/>
+          </svg>
+          <span>C02 · Folded D</span>
+        </div>
+        <!-- Tab 3: Concept 03 -->
+        <div class="tab inactive">
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <polygon points="2,2 11,1 15,5 14,15 1,14" fill="#FFFDF7" stroke="#15171C" stroke-width="1.5" stroke-linejoin="round"/>
+            <polygon points="0.5,4.5 6.5,0.5 8.5,3 2.5,7" fill="#C8F904" stroke="#15171C" stroke-width="1"/>
+            <rect x="5" y="6.5" width="2" height="4.5" fill="#15171C"/>
+            <rect x="9" y="6.5" width="2" height="4.5" fill="#15171C"/>
+          </svg>
+          <span>C03 · Patch</span>
+        </div>
+        <!-- Tab 4: Concept 04 -->
+        <div class="tab inactive">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect width="16" height="16" rx="4" fill="#3B4BFF"/>
+            <path d="M4 12V3.5H8.5C11.2 3.5 13 5.3 13 8C13 10.7 11.2 12.5 8.5 12.5H3.5" stroke="#FFFDF7" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 8L7.8 9.8L10.8 6.2" stroke="#C8F904" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>C04 · Clip</span>
+        </div>
+      </div>
+
+      <!-- Student Workspace Header Mockup -->
+      <div class="workspace-nav">
+        <div class="lockup" style="gap: 10px">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="10" width="13" height="44" rx="2" fill="#15171C"/>
+            <path d="M27 10L54 27.5V36.5L27 54V41.5L41.5 32L27 22.5V10Z" fill="#3B4BFF" stroke="#15171C" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="6,17 24,7 28,14 10,24" fill="#C8F904" stroke="#15171C" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="wordmark" style="font-size: 22px">D<span class="hyphen" style="width:7px;height:4px"></span>Friend</div>
+          <span class="ws-pill" style="margin-left: 6px">WORKSPACE · TOÁN 11</span>
+        </div>
+
+        <!-- Companion Status Pill in Navbar -->
+        <div style="display:flex; align-items:center; gap:10px">
+          <div class="ws-pill" style="background:#FFFDF7">
+            <span style="width:8px;height:8px;border-radius:50%;background:#C8F904;border:1.5px solid #15171C"></span>
+            <span>Done &gt; Perfect</span>
+          </div>
+          <!-- Mini PATCH Companion sitting on navbar -->
+          <div style="width:36px;height:36px;background:#F3F5F7;border:1.5px solid #15171C;border-radius:10px;display:flex;align-items:center;justify-content:center">
+            <svg width="28" height="28" viewBox="0 0 100 100">
+              <polygon points="16,22 65,18 82,35 77,84 14,81" fill="#FFFDF7" stroke="#15171C" stroke-width="5" stroke-linejoin="round"/>
+              <polygon points="9,30 34,13 40,21 15,38" fill="#C8F904" stroke="#15171C" stroke-width="4" stroke-linejoin="round"/>
+              <rect x="31" y="45" width="9" height="14" rx="2" fill="#15171C"/>
+              <rect x="55" y="44" width="9" height="14" rx="2" fill="#15171C"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
