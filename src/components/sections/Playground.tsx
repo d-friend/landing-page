@@ -121,8 +121,6 @@ export function Playground() {
                   </g>
                 );
               })}
-              <line x1="44" y1={needY} x2={g.cx + g.r + 40} y2={needY} stroke="#3B4BFF" strokeWidth="1.5" strokeDasharray="5 4" />
-              <text x={g.cx + g.r + 40} y={needY - 8} textAnchor="end" style={{ ...mono, fill: "#3B4BFF" }}>2,5R</text>
               {/* Gap between where the car is released and the line it has to reach. */}
               <line x1={g.x0 + 44} y1={g.sy} x2={g.x0 + 44} y2={needY} stroke={enough ? "#15171C" : "#FF3366"} strokeWidth="2.5" strokeLinecap="round" />
               <line x1={g.x0 + 38} y1={g.sy} x2={g.x0 + 50} y2={g.sy} stroke={enough ? "#15171C" : "#FF3366"} strokeWidth="2.5" strokeLinecap="round" />
