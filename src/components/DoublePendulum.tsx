@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useFrameLoop } from "@/hooks/useFrameLoop";
 import { DP_START, dpPos, rk4, type DPState } from "@/lib/doublePendulum";
 import { fmt } from "@/lib/fmt";
+import { dict, type Lang } from "@/lib/i18n";
 
 const MAX_TRAIL = 90;
 const RESET_AT = 24; // seconds of simulated time, then the pair is released again
@@ -12,7 +13,9 @@ const snapshot = (s: Sim): Sim => ({ ...s, ta: s.ta.slice(), tb: s.tb.slice() })
 const rod = { stroke: "#15171C", strokeWidth: 3, strokeLinecap: "round" } as const;
 const trailStyle = { fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", opacity: 0.55 } as const;
 
-export function DoublePendulum() {
+export function DoublePendulum({ lang }: { lang: Lang }) {
+  const t = dict[lang].pendulum;
+  const num = (x: number, digits: number) => (lang === "vi" ? x.toFixed(digits).replace(".", ",") : x.toFixed(digits));
   const root = useRef<HTMLDivElement>(null);
   const sim = useRef<Sim>(fresh()); // mutated every frame, read only inside the loop
   const [s, setView] = useState<Sim>(fresh); // what renders
@@ -36,7 +39,7 @@ export function DoublePendulum() {
 
   return (
     <div ref={root}>
-      <svg viewBox="0 0 460 300" style={{ width: "100%", height: "auto", display: "block", background: "#F3F5F7", borderRadius: 12 }} role="img" aria-label="Hai con lắc kép thả gần như giống hệt nhau nhưng chuyển động tách nhau ra">
+      <svg viewBox="0 0 460 300" style={{ width: "100%", height: "auto", display: "block", background: "#F3F5F7", borderRadius: 12 }} role="img" aria-label={t.aria}>
         <polyline points={s.ta.join(" ")} stroke="#3B4BFF" {...trailStyle} />
         <polyline points={s.tb.join(" ")} stroke="#FF3366" {...trailStyle} />
         <line x1="200" y1="150" x2="260" y2="150" {...rod} />
@@ -54,11 +57,11 @@ export function DoublePendulum() {
         <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#3B4BFF", border: "1.5px solid #15171C" }} />
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF3366", border: "1.5px solid #15171C" }} />
-          Thả lệch nhau <strong className="mono" style={{ color: "#15171C" }}>0,001 rad</strong> (dây 1 m)
+          {t.offset}<strong className="mono" style={{ color: "#15171C" }}>{num(0.001, 3)} rad</strong>{t.rod}
         </span>
         <span>
-          t = <strong className="mono" style={{ color: "#15171C" }}>{fmt(s.t)} s</strong>, hai quả cách nhau{" "}
-          <strong className="mono" style={{ color: "#15171C" }}>{(Math.round(gap * 100) / 100).toFixed(2).replace(".", ",")} m</strong>
+          t = <strong className="mono" style={{ color: "#15171C" }}>{fmt(s.t, lang)} s</strong>{t.apart}
+          <strong className="mono" style={{ color: "#15171C" }}>{num(Math.round(gap * 100) / 100, 2)} m</strong>
         </span>
       </div>
     </div>

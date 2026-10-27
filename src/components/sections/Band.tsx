@@ -1,4 +1,4 @@
-const questions = ["Nếu vòng xoắn to hơn thì sao?", "Nếu thả trên Mặt Trăng?", "Nếu dây con lắc dài gấp đôi?", "Nếu a âm thì parabol ra sao?"];
+import { dict, type Lang } from "@/lib/i18n";
 
 function Tape() {
   return (
@@ -9,10 +9,10 @@ function Tape() {
 }
 
 // The second copy repeats the first so the -50% translate loops seamlessly; screen readers get the first only.
-function Run({ hidden }: { hidden?: boolean }) {
+function Run({ lang, hidden }: { lang: Lang; hidden?: boolean }) {
   return (
     <span style={{ display: "flex", gap: 36, alignItems: "center", whiteSpace: "nowrap", paddingRight: 36 }} aria-hidden={hidden || undefined}>
-      {questions.map((q) => (
+      {dict[lang].band.questions.map((q) => (
         <span key={q} style={{ display: "contents" }}>
           {q}
           <Tape />
@@ -22,12 +22,12 @@ function Run({ hidden }: { hidden?: boolean }) {
   );
 }
 
-export function Band() {
+export function Band({ lang }: { lang: Lang }) {
   return (
-    <div className="band" aria-label="Những câu hỏi nếu thì sao bạn có thể hỏi">
+    <div className="band" aria-label={dict[lang].band.label}>
       <div className="marq disp" style={{ fontSize: 30, fontWeight: 800, padding: "18px 0" }}>
-        <Run />
-        <Run hidden />
+        <Run lang={lang} />
+        <Run lang={lang} hidden />
       </div>
     </div>
   );
