@@ -26,7 +26,6 @@ export function LegalPage({ lang, page }: { lang: Lang; page: LegalKind }) {
           <a href={lang === "vi" ? "/?l=vi" : "/en"}>{t.home}</a>
           <a href={lang === "vi" ? `/en/${page}` : `/${page}`} hrefLang={lang === "vi" ? "en" : "vi"}>{dict[lang].switchLabel}</a>
         </nav>
-        <p style={{ display: "inline-block", marginTop: 32, padding: "6px 12px", background: "#C8F904", border: "2px solid #15171C", fontWeight: 700 }}>{t.draft}</p>
         <h1 className="disp" style={{ fontSize: "clamp(32px, 6vw, 52px)", lineHeight: 1.15 }}>{policy.title}</h1>
         {policy.sections.map((section) => (
           <section key={section.title} style={{ marginTop: 32 }}>
