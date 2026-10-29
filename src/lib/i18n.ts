@@ -147,7 +147,6 @@ const vi = {
   finalCta: { line1a: "Đừng chỉ ", line1b: "ghi nhớ.", line2a: "Hãy ", line2b: "khám phá." },
 
   legal: {
-  "draft": "Bản nháp — đang chờ xem xét",
   "home": "Về trang chủ",
   "contact": "Liên hệ và yêu cầu xóa dữ liệu:",
   "privacy": {
@@ -195,7 +194,7 @@ const vi = {
   },
   "terms": {
     "title": "Điều khoản sử dụng",
-    "description": "Điều khoản dự thảo ngắn gọn cho việc sử dụng D-Friend.",
+    "description": "Điều khoản ngắn gọn cho việc sử dụng D-Friend.",
     "sections": [
       {
         "title": "Dịch vụ",
@@ -228,9 +227,9 @@ const vi = {
         ]
       },
       {
-        "title": "Trách nhiệm — câu hỏi còn mở trong bản nháp",
+        "title": "Trách nhiệm",
         "paragraphs": [
-          "Điều khoản trách nhiệm cần quy định thế nào? Câu hỏi này đang chờ Eric và người tư vấn pháp lý xem xét."
+          "D-Friend được cung cấp theo hiện trạng; trong phạm vi pháp luật Việt Nam cho phép, chúng tôi không chịu trách nhiệm cho thiệt hại gián tiếp phát sinh từ việc sử dụng dịch vụ."
         ]
       }
     ]
@@ -385,7 +384,6 @@ const en: typeof vi = {
   finalCta: { line1a: "Stop ", line1b: "memorizing.", line2a: "Start ", line2b: "exploring." },
 
   legal: {
-  "draft": "Draft — pending review",
   "home": "Back to home",
   "contact": "Contact and deletion requests:",
   "privacy": {
@@ -433,7 +431,7 @@ const en: typeof vi = {
   },
   "terms": {
     "title": "Terms of Use",
-    "description": "Short draft terms for using D-Friend.",
+    "description": "Short terms for using D-Friend.",
     "sections": [
       {
         "title": "The service",
@@ -466,9 +464,9 @@ const en: typeof vi = {
         ]
       },
       {
-        "title": "Liability — open draft question",
+        "title": "Liability",
         "paragraphs": [
-          "What liability terms should be included? This question awaits review by Eric and a legal adviser."
+          "D-Friend is provided as is; to the extent permitted by Vietnamese law, we are not liable for indirect damages arising from use of the service."
         ]
       }
     ]
