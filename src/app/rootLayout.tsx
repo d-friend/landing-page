@@ -28,7 +28,7 @@ const mono = JetBrains_Mono({
 const PATH: Record<Lang, string> = { vi: "/", en: "/en" };
 
 // Non-Vietnamese browsers land on the English page. Runs before first paint; ?l=vi is the opt-out the English page links to.
-const REDIRECT = 'try{var l=(navigator.languages&&navigator.languages[0])||navigator.language||"";if(!/^vi/i.test(l)&&!/[?&]l=vi/.test(location.search))location.replace("/en")}catch(e){}';
+const REDIRECT = 'try{var l=(navigator.languages&&navigator.languages[0])||navigator.language||"";if(location.pathname==="/"&&!/^vi/i.test(l)&&!/[?&]l=vi/.test(location.search))location.replace("/en")}catch(e){}';
 
 export function metadataFor(lang: Lang): Metadata {
   const { title, description, ogLocale, ogAlt } = dict[lang];

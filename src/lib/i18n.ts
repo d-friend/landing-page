@@ -146,7 +146,97 @@ const vi = {
 
   finalCta: { line1a: "Đừng chỉ ", line1b: "ghi nhớ.", line2a: "Hãy ", line2b: "khám phá." },
 
-  footer: { teachers: "Giáo viên", contact: "Liên hệ" },
+  legal: {
+  "draft": "Bản nháp — đang chờ xem xét",
+  "home": "Về trang chủ",
+  "contact": "Liên hệ và yêu cầu xóa dữ liệu:",
+  "privacy": {
+    "title": "Chính sách quyền riêng tư",
+    "description": "Dữ liệu D-Friend thu thập và cách sử dụng dữ liệu trong quá trình học.",
+    "sections": [
+      {
+        "title": "Dữ liệu và mục đích sử dụng",
+        "paragraphs": [
+          "D-Friend dùng cookie df_guest để nhận ra trình duyệt, gắn các buổi học với bạn và cho phép mở lại lịch sử. Khi đăng nhập bằng Google, chúng tôi nhận và lưu email, tên (nếu có) và mã tài khoản Google (sub) để nhận diện tài khoản và liên kết lịch sử học giữa các thiết bị. Google cũng được dùng để xác thực đăng nhập. Cookie tạm df_oauth giữ trạng thái xác thực trong lúc chuyển sang Google và quay lại.",
+          "Khi đăng nhập bằng Google, chúng tôi cũng lưu tuổi bạn khai báo và, với học sinh dưới 16 tuổi, thời điểm cha mẹ hoặc người giám hộ xác nhận đồng ý.",
+          "Chúng tôi lưu tin nhắn của bạn, phản hồi của AI và ảnh đề bài bạn tải lên để xử lý yêu cầu và mở lại cuộc trò chuyện. Tài liệu trong chỗ làm bài, trạng thái làm bài đã lưu và câu trả lời bạn gửi có thể được lưu để tiếp tục học và phản hồi bài làm. Nội dung câu trả lời cũng có thể nằm trong lịch sử tin nhắn của chỗ làm bài.",
+          "Chúng tôi lưu sự kiện sử dụng như mở ứng dụng, gửi tin nhắn, dùng gợi ý, hoàn thành bài, thời gian phản hồi và lỗi để hiểu cách sử dụng, theo dõi chất lượng và vận hành dịch vụ. Dữ liệu sự kiện hành vi được tách khỏi nội dung hội thoại: các trường sự kiện thông thường không chứa nội dung tin nhắn, ảnh hay câu trả lời; chúng chứa số đếm, độ dài, thời gian, trạng thái và thông tin kỹ thuật như đường dẫn trang, tên miền giới thiệu và kích thước màn hình.",
+          "Chúng tôi nhận địa chỉ IP khi bạn kết nối, chuyển nó thành mã băm có khóa và lưu mã băm trong cơ sở dữ liệu để giới hạn tần suất và ngăn lạm dụng. Mã băm này không chỉ nằm trong bộ nhớ tạm. Luồng ứng dụng này không ghi IP gốc vào cơ sở dữ liệu; cách lưu nhật ký ở hạ tầng triển khai vẫn cần được xác nhận.",
+          "Chúng tôi cũng lưu thông tin trình duyệt, ngôn ngữ, thời điểm truy cập và thông tin kỹ thuật của lượt học để vận hành và kiểm tra dịch vụ. Nếu bạn gửi góp ý, nội dung góp ý được lưu để chúng tôi xem xét. Trình duyệt có thể lưu lựa chọn giao diện và trạng thái thanh bên để giữ tùy chọn của bạn."
+        ]
+      },
+      {
+        "title": "Dịch vụ bên ngoài",
+        "paragraphs": [
+          "OpenAI là nhà cung cấp mô hình AI của D-Friend. Nội dung cần thiết cho phản hồi AI, gồm tin nhắn, ảnh và ngữ cảnh bài học, được gửi tới OpenAI.",
+          "Khi tra cứu tài liệu, hệ thống có thể gửi truy vấn tìm kiếm, URL và yêu cầu trích xuất tới Tavily; OpenAI có thể cung cấp tìm kiếm dự phòng. Truy vấn có thể được tạo từ nội dung bài học hoặc câu hỏi của bạn. Hệ thống cũng tải tài liệu và ảnh từ các website nguồn. Google cung cấp đăng nhập qua Google OAuth. Supabase cung cấp cơ sở dữ liệu tại Singapore. Vercel cung cấp dịch vụ lưu trữ các trang web. Chúng tôi cũng sử dụng các nhà cung cấp dịch vụ lưu trữ và hạ tầng khác xử lý dữ liệu thay mặt chúng tôi."
+        ]
+      },
+      {
+        "title": "Thời gian lưu và yêu cầu xóa",
+        "paragraphs": [
+          "Chúng tôi lưu dữ liệu cho đến khi bạn yêu cầu chúng tôi xóa. Bạn có thể yêu cầu xóa tài khoản và dữ liệu bằng cách gửi email tới hello@dfriend.online. Chúng tôi xử lý yêu cầu xóa thủ công và sẽ thực hiện sớm nhất có thể. Chi tiết về việc xóa dữ liệu trong bản sao lưu vẫn đang được xem xét.",
+          "Thời hạn cookie không phải thời hạn xóa dữ liệu đã lưu. Đăng xuất hoặc xóa cookie không tự xóa tài khoản, lịch sử, ảnh hoặc dữ liệu trong cơ sở dữ liệu."
+        ]
+      },
+      {
+        "title": "Quảng cáo và bán dữ liệu",
+        "paragraphs": [
+          "D-Friend không chạy quảng cáo và không bán dữ liệu của bạn."
+        ]
+      },
+      {
+        "title": "Học sinh dưới 16 tuổi",
+        "paragraphs": [
+          "Học sinh dưới 16 tuổi nên sử dụng D-Friend với sự biết đến của cha mẹ hoặc giáo viên. Cha mẹ có thể yêu cầu xóa dữ liệu của con bằng cách gửi email tới hello@dfriend.online. Đăng nhập bằng Google yêu cầu xác nhận của cha mẹ hoặc người giám hộ đối với học sinh dưới 16 tuổi."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Điều khoản sử dụng",
+    "description": "Điều khoản dự thảo ngắn gọn cho việc sử dụng D-Friend.",
+    "sections": [
+      {
+        "title": "Dịch vụ",
+        "paragraphs": [
+          "D-Friend là công cụ học tập dùng AI để trò chuyện, gợi ý và tạo chỗ làm bài, hình minh họa hoặc mô phỏng tương tác. Bạn có thể bắt đầu với tư cách khách; đăng nhập Google giúp liên kết lịch sử học với tài khoản."
+        ]
+      },
+      {
+        "title": "Sử dụng phù hợp",
+        "paragraphs": [
+          "Sử dụng dịch vụ cho mục đích hợp pháp. Không gửi nội dung xâm phạm quyền của người khác, không cố truy cập dữ liệu của người khác, phá hoại dịch vụ hoặc vượt giới hạn sử dụng. Chỉ tải lên nội dung bạn có quyền sử dụng và tránh gửi thông tin cá nhân không cần thiết."
+        ]
+      },
+      {
+        "title": "Câu trả lời của AI",
+        "paragraphs": [
+          "Câu trả lời, cách chấm và mô phỏng do AI tạo có thể sai hoặc thiếu. D-Friend không bảo đảm mọi câu trả lời đều chính xác. Hãy kiểm tra lại kết quả và hỏi giáo viên khi cần."
+        ]
+      },
+      {
+        "title": "Quyền riêng tư và học sinh nhỏ tuổi",
+        "paragraphs": [
+          "Chính sách quyền riêng tư mô tả dữ liệu được xử lý. Học sinh dưới 16 tuổi nên dùng dịch vụ với sự biết đến của cha mẹ hoặc giáo viên. Cha mẹ có thể yêu cầu xóa dữ liệu qua hello@dfriend.online. Đăng nhập bằng Google yêu cầu xác nhận của cha mẹ hoặc người giám hộ đối với học sinh dưới 16 tuổi."
+        ]
+      },
+      {
+        "title": "Luật áp dụng",
+        "paragraphs": [
+          "Các điều khoản này được điều chỉnh bởi pháp luật Việt Nam."
+        ]
+      },
+      {
+        "title": "Trách nhiệm — câu hỏi còn mở trong bản nháp",
+        "paragraphs": [
+          "Điều khoản trách nhiệm cần quy định thế nào? Câu hỏi này đang chờ Eric và người tư vấn pháp lý xem xét."
+        ]
+      }
+    ]
+  }
+},
+  footer: { teachers: "Giáo viên", contact: "Liên hệ", privacy: "Quyền riêng tư", terms: "Điều khoản" },
 };
 
 const en: typeof vi = {
@@ -294,7 +384,97 @@ const en: typeof vi = {
 
   finalCta: { line1a: "Stop ", line1b: "memorizing.", line2a: "Start ", line2b: "exploring." },
 
-  footer: { teachers: "Teachers", contact: "Contact" },
+  legal: {
+  "draft": "Draft — pending review",
+  "home": "Back to home",
+  "contact": "Contact and deletion requests:",
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "What D-Friend collects and how it uses data during learning.",
+    "sections": [
+      {
+        "title": "Data and its purposes",
+        "paragraphs": [
+          "D-Friend uses a df_guest cookie to recognize your browser, associate learning sessions with you and reopen your history. When you sign in with Google, we receive and store your email, name (if available) and Google account identifier (sub) to identify your account and link learning history across devices. Google also authenticates your sign-in. A temporary df_oauth cookie holds authentication state while you go to Google and return.",
+          "When you sign in with Google, we also store your declared age and, for students under 16, the time a parent or guardian confirmed consent.",
+          "We store your messages, AI responses and uploaded problem photos to process your requests and reopen conversations. Workspace documents, saved work state and answers you submit may be stored to continue learning and respond to your work. Answer content may also appear in workspace message history.",
+          "We store usage events such as opening the app, sending messages, using hints, completing problems, response times and errors to understand usage, monitor quality and operate the service. Behavior event data is separate from conversation content: normal event fields do not contain message text, photos or answers; they contain counts, lengths, timings, status and technical details such as page paths, referring domains and screen size.",
+          "We receive your IP address when you connect, convert it into a keyed hash and store that hash in the database to enforce rate limits and prevent abuse. This hash is not kept only in temporary memory. This application flow does not write the raw IP to the database; deployment infrastructure logging still needs confirmation.",
+          "We also store browser information, language, access times and technical learning-turn information to operate and inspect the service. If you send feedback, we store its content for review. Your browser may store your theme and sidebar choices to remember your preferences."
+        ]
+      },
+      {
+        "title": "External services",
+        "paragraphs": [
+          "OpenAI is D-Friend’s AI model provider. Content needed for AI responses, including messages, photos and learning context, is sent to OpenAI.",
+          "When researching material, the system may send search queries, URLs and extraction requests to Tavily; OpenAI may provide fallback search. Queries may be generated from lesson content or your question. The system also retrieves material and images from source websites. Google provides sign-in through Google OAuth. Supabase provides the database in Singapore. Vercel provides web page hosting. We also use other hosting and infrastructure providers who process data on our behalf."
+        ]
+      },
+      {
+        "title": "Retention and deletion requests",
+        "paragraphs": [
+          "We keep data until you ask us to delete it. You can request account and data deletion by emailing hello@dfriend.online. We handle deletion requests manually and will act as soon as we can. Details of deletion from backups remain under review.",
+          "A cookie expiry is not a deletion deadline for stored data. Signing out or clearing cookies does not automatically delete your account, history, photos or database records."
+        ]
+      },
+      {
+        "title": "Advertising and selling data",
+        "paragraphs": [
+          "D-Friend does not run ads or sell your data."
+        ]
+      },
+      {
+        "title": "Students under 16",
+        "paragraphs": [
+          "Students under 16 should use D-Friend with a parent’s or teacher’s knowledge. A parent can request deletion of their child’s data by emailing hello@dfriend.online. Signing in with Google requires a parent or guardian’s confirmation for students under 16."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "description": "Short draft terms for using D-Friend.",
+    "sections": [
+      {
+        "title": "The service",
+        "paragraphs": [
+          "D-Friend is an AI learning tool for conversations, hints and workspaces, illustrations or interactive simulations. You can start as a guest; Google sign-in helps link learning history to your account."
+        ]
+      },
+      {
+        "title": "Acceptable use",
+        "paragraphs": [
+          "Use the service lawfully. Do not submit content that violates others’ rights, try to access other people’s data, disrupt the service or bypass usage limits. Only upload content you have the right to use, and avoid sharing unnecessary personal information."
+        ]
+      },
+      {
+        "title": "AI answers",
+        "paragraphs": [
+          "AI answers, grading and simulations may be incorrect or incomplete. D-Friend does not guarantee that every answer is correct. Check results and ask a teacher when needed."
+        ]
+      },
+      {
+        "title": "Privacy and younger students",
+        "paragraphs": [
+          "The Privacy Policy describes the data we process. Students under 16 should use the service with a parent’s or teacher’s knowledge. A parent can request deletion at hello@dfriend.online. Signing in with Google requires a parent or guardian’s confirmation for students under 16."
+        ]
+      },
+      {
+        "title": "Governing law",
+        "paragraphs": [
+          "These terms are governed by the law of Vietnam."
+        ]
+      },
+      {
+        "title": "Liability — open draft question",
+        "paragraphs": [
+          "What liability terms should be included? This question awaits review by Eric and a legal adviser."
+        ]
+      }
+    ]
+  }
+},
+  footer: { teachers: "Teachers", contact: "Contact", privacy: "Privacy", terms: "Terms" },
 };
 
 export const dict: Record<Lang, typeof vi> = { vi, en };
