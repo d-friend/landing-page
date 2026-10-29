@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/sections/Footer";
 import { dict, type Lang } from "@/lib/i18n";
+import { SITE } from "@/lib/site";
 
 type LegalKind = "privacy" | "terms";
 
 export function legalMetadata(lang: Lang, page: LegalKind): Metadata {
   const t = dict[lang].legal[page];
-  const languages = { vi: `https://www.dfriend.online/${page}`, en: `https://www.dfriend.online/en/${page}` };
+  const vi = `${SITE}/${page}`;
+  const languages = { vi, en: `${SITE}/en/${page}`, "x-default": vi };
   return {
     title: `${t.title} · D-Friend`,
     description: t.description,

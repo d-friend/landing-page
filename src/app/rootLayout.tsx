@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import { dict, type Lang } from "@/lib/i18n";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const sans = Be_Vietnam_Pro({
@@ -33,11 +34,10 @@ const REDIRECT = 'try{var l=(navigator.languages&&navigator.languages[0])||navig
 export function metadataFor(lang: Lang): Metadata {
   const { title, description, ogLocale, ogAlt } = dict[lang];
   return {
-    // shortcut: placeholder domain until Eric picks one; set NEXT_PUBLIC_SITE_URL at deploy.
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://dfriend.online"),
+    metadataBase: new URL(SITE),
     title,
     description,
-    alternates: { canonical: PATH[lang], languages: PATH },
+    alternates: { canonical: PATH[lang], languages: { ...PATH, "x-default": PATH.vi } },
     openGraph: { type: "website", locale: ogLocale, siteName: "D-Friend", title, description, url: PATH[lang], images: [{ url: "/og.png", width: 1200, height: 630, alt: ogAlt }] },
     twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
   };
