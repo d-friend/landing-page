@@ -167,7 +167,7 @@ const vi = {
       {
         "title": "Dịch vụ bên ngoài",
         "paragraphs": [
-          "OpenAI là nhà cung cấp mô hình AI của D-Friend. Nội dung cần thiết cho phản hồi AI, gồm tin nhắn, ảnh và ngữ cảnh bài học, được gửi tới OpenAI.",
+          "OpenAI và Anthropic là các nhà cung cấp mô hình AI của D-Friend. Nội dung cần thiết cho phản hồi AI, gồm tin nhắn, ảnh và ngữ cảnh bài học, được gửi tới OpenAI và Anthropic.",
           "Khi tra cứu tài liệu, hệ thống có thể gửi truy vấn tìm kiếm, URL và yêu cầu trích xuất tới Tavily; OpenAI có thể cung cấp tìm kiếm dự phòng. Truy vấn có thể được tạo từ nội dung bài học hoặc câu hỏi của bạn. Hệ thống cũng tải tài liệu và ảnh từ các website nguồn. Google cung cấp đăng nhập qua Google OAuth. Supabase cung cấp cơ sở dữ liệu tại Singapore. Vercel cung cấp dịch vụ lưu trữ các trang web. Chúng tôi cũng sử dụng các nhà cung cấp dịch vụ lưu trữ và hạ tầng khác xử lý dữ liệu thay mặt chúng tôi."
         ]
       },
@@ -404,7 +404,7 @@ const en: typeof vi = {
       {
         "title": "External services",
         "paragraphs": [
-          "OpenAI is D-Friend’s AI model provider. Content needed for AI responses, including messages, photos and learning context, is sent to OpenAI.",
+          "OpenAI and Anthropic are D-Friend’s AI model providers. Content needed for AI responses, including messages, photos and learning context, is sent to OpenAI and Anthropic.",
           "When researching material, the system may send search queries, URLs and extraction requests to Tavily; OpenAI may provide fallback search. Queries may be generated from lesson content or your question. The system also retrieves material and images from source websites. Google provides sign-in through Google OAuth. Supabase provides the database in Singapore. Vercel provides web page hosting. We also use other hosting and infrastructure providers who process data on our behalf."
         ]
       },
